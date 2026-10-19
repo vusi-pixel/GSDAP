@@ -25,7 +25,7 @@ The **Ghana Student Digital Access Programme (GSDAP)** is a national educational
 ## 🛠️ Architecture & Tech Stack
 
 ```
-One Million Coders / GSDAP
+GSDAP (Ghana Student Digital Access Programme)
 ├── client/          # Frontend Single-Page App (React + Vite + TypeScript)
 ├── server/          # Backend REST API (Node.js + Express + TypeScript + Prisma)
 ├── shared/          # Shared types, validation schemas, and constants

@@ -169,7 +169,7 @@ export default function DashboardPage() {
                 Academic Dossier & Study Record
               </h1>
               <p className="text-sm text-muted-foreground mt-2 max-w-2xl font-sans leading-relaxed">
-                Welcome, {user?.firstName || 'Amara'}. Your synchronized learning progress across accredited partner institutions, course milestones, and authenticated credentials.
+                Welcome, {user?.firstName || 'Learner'}. Your synchronized learning progress across accredited partner institutions, course milestones, and authenticated credentials.
               </p>
             </div>
 

@@ -28,10 +28,10 @@ interface AuthState {
 }
 
 export const DEMO_USER: User = {
-  id: 'usr_demo_amara',
-  email: 'amara.okafor@coders.org',
-  firstName: 'Amara',
-  lastName: 'Okafor',
+  id: 'usr_student',
+  email: 'student@gsdap.org',
+  firstName: 'Student',
+  lastName: 'Learner',
   role: 'learner',
   emailVerified: true,
 };

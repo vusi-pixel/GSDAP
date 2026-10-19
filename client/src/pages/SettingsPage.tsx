@@ -62,8 +62,8 @@ export default function SettingsPage() {
           bio: meData.profile?.bio || '',
         }
       : {
-          firstName: user?.firstName || 'Amara',
-          lastName: user?.lastName || 'Okafor',
+          firstName: user?.firstName || 'Student',
+          lastName: user?.lastName || 'Learner',
           bio: 'Cloud Architect Apprentice & Distributed Systems Researcher under the TVET National Engineering Framework.',
         },
   });
@@ -205,7 +205,7 @@ export default function SettingsPage() {
                   <input
                     type="email"
                     disabled
-                    value={user?.email || 'amara.okafor@coders.org'}
+                    value={user?.email || 'student@gsdap.org'}
                     className="w-full text-xs font-mono px-3.5 py-2.5 bg-muted/40 border border-border/80 rounded text-muted-foreground cursor-not-allowed"
                   />
                   <p className="text-[11px] text-muted-foreground font-mono mt-1">
@@ -464,14 +464,14 @@ export default function SettingsPage() {
               <div className="pt-2 flex flex-col sm:flex-row sm:items-center gap-3">
                 <input
                   type="text"
-                  placeholder={`Type "${user?.email || 'amara.okafor@coders.org'}" to confirm`}
+                  placeholder={`Type "${user?.email || 'student@gsdap.org'}" to confirm`}
                   value={deleteConfirm}
                   onChange={(e) => setDeleteConfirm(e.target.value)}
                   className="font-mono text-xs bg-background/80 border border-border/80 rounded px-3 py-2 text-foreground focus:outline-none focus:border-red-500 flex-1 shadow-sm"
                 />
                 <button
                   type="button"
-                  disabled={deleteConfirm !== (user?.email || 'amara.okafor@coders.org')}
+                  disabled={deleteConfirm !== (user?.email || 'student@gsdap.org')}
                   onClick={() => deleteMutation.mutate()}
                   className="font-mono text-xs uppercase tracking-wider px-4 py-2 rounded bg-red-600 text-white hover:bg-red-700 disabled:opacity-40 transition-all inline-flex items-center gap-2 shadow-sm active:scale-95 flex-shrink-0"
                 >

@@ -81,7 +81,7 @@ const FEATURED_COURSES = [
     skills: ['React', 'Node.js', 'PostgreSQL', 'Docker'],
     level: 'intermediate',
     hours: 420,
-    url: 'https://onemillioncoders.io/tvet/fullstack-diploma',
+    url: 'https://gsdap.org/tvet/fullstack-diploma',
   },
   {
     id: 'coursera-deep-learning',
@@ -526,42 +526,42 @@ export default function LandingPage() {
 
       {/* ─── 4. Call to Technical Enrollment ───────────────────────────────── */}
       <section
-        className="relative py-32 px-6 md:px-12 overflow-hidden z-10 bg-slate-950 text-white"
+        className="relative py-28 md:py-36 px-6 md:px-12 overflow-hidden z-10 border-t border-border bg-card dark:bg-slate-950 text-foreground dark:text-white"
         style={{ backgroundImage: 'url(/images/cta-bg.jpg)', backgroundSize: 'cover', backgroundPosition: 'center 30%' }}
       >
-        {/* Consistent dark overlay ensures crystal-clear text readability in both light and dark modes */}
-        <div className="absolute inset-0 bg-slate-950/85" />
-        <div className="absolute inset-0 bg-emerald-950/40 mix-blend-color" />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-slate-950/40 to-slate-950/90" />
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-950/60 via-transparent to-slate-950/60" />
+        {/* Responsive backdrop overlay ensuring crystal-clear text readability in both light (white) and dark modes */}
+        <div className="absolute inset-0 bg-background/90 dark:bg-slate-950/85 backdrop-blur-[1px]" />
+        <div className="absolute inset-0 bg-emerald-500/10 dark:bg-emerald-950/40 mix-blend-multiply dark:mix-blend-color" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/40 to-background dark:via-slate-950/40 dark:to-slate-950/90" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background/70 via-transparent to-background/70 dark:from-slate-950/60 dark:via-transparent dark:to-slate-950/60" />
 
         <FadeIn direction="up" className="relative z-10">
           <div className="max-w-5xl mx-auto text-center space-y-7">
 
-            <div className="inline-flex items-center gap-2 font-mono text-xs text-emerald-300 uppercase tracking-widest border border-emerald-500/40 px-3 py-1 rounded bg-emerald-950/60 shadow-sm backdrop-blur-sm">
-              <ShieldCheck size={14} strokeWidth={1.5} className="text-emerald-400" />
+            <div className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest border border-emerald-600/30 dark:border-emerald-500/40 px-3.5 py-1.5 rounded bg-emerald-100/90 dark:bg-emerald-950/70 text-emerald-900 dark:text-emerald-300 shadow-sm backdrop-blur-sm">
+              <ShieldCheck size={14} strokeWidth={1.7} className="text-emerald-700 dark:text-emerald-400" />
               <span>Open Access to Verified Education</span>
             </div>
 
-            <h2 className="font-serif text-4xl md:text-6xl font-normal tracking-tight text-white max-w-3xl mx-auto leading-tight drop-shadow-lg">
+            <h2 className="font-serif text-4xl md:text-6xl font-normal tracking-tight text-foreground dark:text-white max-w-3xl mx-auto leading-tight drop-shadow-sm">
               Initiate Your Certified Engineering Journey.
             </h2>
 
-            <p className="text-sm md:text-lg text-white/80 font-sans max-w-xl mx-auto leading-relaxed">
+            <p className="text-sm md:text-lg text-muted-foreground dark:text-white/80 font-sans max-w-xl mx-auto leading-relaxed">
               Create an academic dossier in 30 seconds. Access official curricula from Google, Microsoft, NVIDIA, and TVET colleges — zero tuition, verified credentials.
             </p>
 
             <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4 font-mono text-xs">
               <Link
                 to="/login"
-                className="px-8 py-4 bg-emerald-500 hover:bg-emerald-400 text-slate-950 transition-all font-semibold uppercase tracking-wider inline-flex items-center gap-2 shadow-2xl active:scale-95"
+                className="px-8 py-4 bg-emerald-600 hover:bg-emerald-700 text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-slate-950 transition-all font-semibold uppercase tracking-wider inline-flex items-center gap-2 shadow-xl hover:shadow-2xl active:scale-95"
               >
                 <span>Access Learner Registry</span>
                 <ArrowRight size={14} strokeWidth={1.5} />
               </Link>
               <Link
                 to="/catalog"
-                className="px-6 py-4 border border-white/30 bg-white/10 hover:bg-white/20 text-white transition-all font-semibold uppercase tracking-wider backdrop-blur-sm shadow-lg active:scale-95"
+                className="px-6 py-4 border border-border bg-card/90 hover:bg-muted text-foreground dark:border-white/30 dark:bg-white/10 dark:hover:bg-white/20 dark:text-white transition-all font-semibold uppercase tracking-wider backdrop-blur-sm shadow-md active:scale-95"
               >
                 Examine Course Syllabus
               </Link>

@@ -385,7 +385,7 @@ model Credential {
   type         CredentialType
   title        String
   description  String?
-  issuer       String         @default("One Million Coders")
+  issuer       String         @default("GSDAP")
   badgeUrl     String?
   verifyCode   String         @unique @default(uuid())
   issuedAt     DateTime       @default(now())

@@ -9,13 +9,13 @@ const options: swaggerJsdoc.Options = {
       description: 'Learning aggregation platform API — bringing Coursera, Google, Microsoft, NVIDIA and TVET into one place.',
       contact: {
         name: 'GSDAP',
-        url: 'https://onemillioncoders.io',
-        email: 'api@onemillioncoders.io',
+        url: 'https://gsdap.org',
+        email: 'api@gsdap.org',
       },
     },
     servers: [
       { url: 'http://localhost:4000', description: 'Development' },
-      { url: 'https://api.onemillioncoders.io', description: 'Production' },
+      { url: 'https://api.gsdap.org', description: 'Production' },
     ],
     components: {
       securitySchemes: {

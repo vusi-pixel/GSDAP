@@ -25,7 +25,7 @@ export default function LoginPage() {
   } = useForm<LoginForm>({
     resolver: zodResolver(LoginSchema),
     defaultValues: {
-      email: 'amara.okafor@coders.org',
+      email: 'student@gsdap.org',
       password: 'Password123!',
     },
   });
@@ -88,7 +88,7 @@ export default function LoginPage() {
               <span>Instant Development Session</span>
             </div>
             <p className="text-xs text-muted-foreground leading-relaxed">
-              Bypass credentials and access the verified academic record for <strong>Amara Okafor</strong>.
+              Bypass credentials and access the verified academic record for <strong>Student Learner</strong>.
             </p>
             <button
               type="button"

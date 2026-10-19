@@ -106,7 +106,7 @@ export default function DashboardLayout() {
           <div className="flex items-start justify-between mb-2">
             <div>
               <p className="font-serif font-semibold text-sm leading-tight text-foreground">
-                {user?.firstName || 'Amara'} {user?.lastName || 'Okafor'}
+                {user?.firstName ? `${user.firstName} ${user.lastName || ''}`.trim() : 'Student Learner'}
               </p>
               <p className="font-mono text-[11px] text-muted-foreground mt-0.5 flex items-center gap-1">
                 <span>ID: GSDAP-2026-8841</span>
@@ -386,7 +386,7 @@ export default function DashboardLayout() {
                   <div className="flex items-start justify-between">
                     <div>
                       <p className="font-serif font-semibold text-sm text-foreground">
-                        {user?.firstName || 'Amara'} {user?.lastName || 'Okafor'}
+                        {user?.firstName ? `${user.firstName} ${user.lastName || ''}`.trim() : 'Student Learner'}
                       </p>
                       <p className="font-mono text-[11px] text-muted-foreground mt-0.5">
                         ID: GSDAP-2026-8841

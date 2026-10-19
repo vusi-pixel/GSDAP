@@ -81,7 +81,7 @@ async function main() {
       create: {
         name: 'tvet',
         displayName: 'TVET',
-        website: 'https://onemillioncoders.io/tvet',
+        website: 'https://gsdap.org/tvet',
         description: 'Technical and Vocational Education and Training — practical skills for the workforce',
         logoUrl: null,
         isActive: true,
@@ -172,7 +172,7 @@ async function main() {
 
   // ─── Users ───────────────────────────────────────────────────────────────────
 
-  const adminEmail = process.env.INITIAL_ADMIN_EMAIL || 'admin@onemillioncoders.io';
+  const adminEmail = process.env.INITIAL_ADMIN_EMAIL || 'admin@gsdap.org';
   const adminPassword = process.env.INITIAL_ADMIN_PASSWORD || 'Admin@12345';
 
   const adminHash = await argon2.hash(adminPassword);
@@ -313,7 +313,7 @@ async function main() {
 
   console.log('\n🎉 Seed complete!\n');
   console.log('─────────────────────────────────────────');
-  console.log('  Admin:   admin@onemillioncoders.io / Admin@12345');
+  console.log('  Admin:   admin@gsdap.org / Admin@12345');
   console.log('  Learner: learner@demo.io / Learner@123');
   console.log('  Mentor:  mentor@demo.io / Mentor@123');
   console.log('─────────────────────────────────────────\n');

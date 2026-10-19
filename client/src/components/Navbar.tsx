@@ -159,7 +159,7 @@ export default function Navbar() {
                       : 'bg-emerald-600 dark:bg-emerald-400'
                   }`}
                 />
-                <span className="hidden sm:inline font-semibold">{user?.firstName || 'Amara'}</span>
+                <span className="hidden sm:inline font-semibold">{user?.firstName || 'Learner'}</span>
                 <span className="text-muted-foreground text-[10px] hidden sm:inline">Dossier</span>
               </Link>
             </div>
@@ -281,7 +281,7 @@ export default function Navbar() {
                   <div className="flex items-center justify-between text-xs">
                     <span className="text-foreground font-semibold flex items-center gap-1.5">
                       <span className="w-2 h-2 rounded-full bg-emerald-500" />
-                      {user?.firstName || 'Amara'} {user?.lastName || 'Okafor'}
+                      {user?.firstName ? `${user.firstName} ${user.lastName || ''}`.trim() : 'Learner Dossier'}
                     </span>
                     <span className="text-[10px] text-muted-foreground font-mono">GSDAP-2026-8841</span>
                   </div>

@@ -518,7 +518,7 @@ const DEFAULT_COURSES = [
     rating: 4.5,
     enrollmentCount: 5000,
     skills: ['HTML5', 'CSS3', 'JavaScript', 'Responsive Design', 'Git', 'Netlify'],
-    url: 'https://onemillioncoders.io/tvet/web-development',
+    url: 'https://gsdap.org/tvet/web-development',
   },
   {
     id: 'tvet-python-programming',
@@ -534,7 +534,7 @@ const DEFAULT_COURSES = [
     rating: 4.7,
     enrollmentCount: 7000,
     skills: ['Python', 'Programming Fundamentals', 'Pandas', 'Data Analysis', 'Automation', 'Git'],
-    url: 'https://onemillioncoders.io/tvet/python',
+    url: 'https://gsdap.org/tvet/python',
   },
   {
     id: 'tvet-computer-networking',
@@ -550,7 +550,7 @@ const DEFAULT_COURSES = [
     rating: 4.5,
     enrollmentCount: 3500,
     skills: ['Networking', 'TCP/IP', 'Cisco IOS', 'VLANs', 'OSPF', 'Wireless', 'CCNA'],
-    url: 'https://onemillioncoders.io/tvet/networking',
+    url: 'https://gsdap.org/tvet/networking',
   },
   {
     id: 'tvet-digital-marketing',
@@ -566,7 +566,7 @@ const DEFAULT_COURSES = [
     rating: 4.6,
     enrollmentCount: 4500,
     skills: ['Digital Marketing', 'Social Media', 'SEO', 'Google Ads', 'E-Commerce', 'WhatsApp Business'],
-    url: 'https://onemillioncoders.io/tvet/digital-marketing',
+    url: 'https://gsdap.org/tvet/digital-marketing',
   },
   {
     id: 'tvet-electrical-installation',
@@ -582,7 +582,7 @@ const DEFAULT_COURSES = [
     rating: 4.6,
     enrollmentCount: 2800,
     skills: ['Electrical Installation', 'AC/DC Circuits', 'Solar PV', 'IEE Wiring', 'Earthing Systems'],
-    url: 'https://onemillioncoders.io/tvet/electrical-installation',
+    url: 'https://gsdap.org/tvet/electrical-installation',
   },
   {
     id: 'tvet-fullstack-diploma',
@@ -598,7 +598,7 @@ const DEFAULT_COURSES = [
     rating: 4.8,
     enrollmentCount: 1500,
     skills: ['React', 'Node.js', 'PostgreSQL', 'Docker', 'REST API', 'JavaScript', 'CI/CD', 'Prisma'],
-    url: 'https://onemillioncoders.io/tvet/fullstack-diploma',
+    url: 'https://gsdap.org/tvet/fullstack-diploma',
   },
   {
     id: 'tvet-cybersecurity-basics',
@@ -614,7 +614,7 @@ const DEFAULT_COURSES = [
     rating: 4.6,
     enrollmentCount: 2200,
     skills: ['Cybersecurity', 'Phishing Awareness', 'Mobile Security', 'VPN', 'Nmap', 'Incident Reporting'],
-    url: 'https://onemillioncoders.io/tvet/cybersecurity',
+    url: 'https://gsdap.org/tvet/cybersecurity',
   },
 ];
 

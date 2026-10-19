@@ -12,7 +12,7 @@ export default defineConfig({
       manifest: {
         name: 'GSDAP (Ghana Student Digital Access Programme)',
         short_name: 'GSDAP',
-        description: 'Your gateway to world-class tech education. 1 million learners. 5 providers. Infinite possibilities.',
+        description: 'Ghana Student Digital Access Programme. 1 million learners. 5 providers. Infinite possibilities.',
         theme_color: '#6366f1',
         background_color: '#0f0f23',
         display: 'standalone',
@@ -26,7 +26,7 @@ export default defineConfig({
       workbox: {
         runtimeCaching: [
           {
-            urlPattern: /^https:\/\/api\.onemillioncoders\.io\/catalog/,
+            urlPattern: /^https:\/\/api\.gsdap\.org\/catalog/,
             handler: 'StaleWhileRevalidate',
             options: {
               cacheName: 'catalog-cache',

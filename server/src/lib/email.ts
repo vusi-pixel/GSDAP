@@ -19,7 +19,7 @@ interface MailOptions {
 export async function sendMail({ to, subject, html }: MailOptions) {
   try {
     const info = await transporter.sendMail({
-      from: process.env.SMTP_FROM || 'noreply@onemillioncoders.io',
+      from: process.env.SMTP_FROM || 'noreply@gsdap.org',
       to,
       subject,
       html,
