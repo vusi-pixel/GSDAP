@@ -12,6 +12,7 @@ import {
   Compass,
   RefreshCw,
   Activity,
+  LogOut,
 } from 'lucide-react';
 import { useAuthStore, useThemeStore } from '../store';
 import { authApi } from '../lib/api';
@@ -28,8 +29,8 @@ export default function Navbar() {
     refreshSession,
   } = useAuthStore();
   const { theme, setTheme, dataSaverMode, setDataSaverMode } = useThemeStore();
-  const [mobileOpen, setMobileOpen] = useState(false);
   const navigate = useNavigate();
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   async function handleLogout() {
     try {
@@ -60,7 +61,7 @@ export default function Navbar() {
               <span className="font-serif text-lg font-semibold tracking-tight text-foreground block leading-none group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
                 GSDAP
               </span>
-              <span className="font-mono text-[9px] uppercase tracking-widest text-muted-foreground block mt-0.5">
+              <span className="font-mono text-[9px] uppercase tracking-widest text-muted-foreground block mt-0.5 max-w-[130px] sm:max-w-none truncate">
                 Ghana Student Digital Access Programme
               </span>
             </div>
@@ -190,81 +191,131 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Drawer with Pronounced Slide & Fade */}
+      {/* Mobile Drawer with Backdrop & Slide Animation */}
       <AnimatePresence>
         {mobileOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0, y: -10 }}
-            animate={{ opacity: 1, height: 'auto', y: 0 }}
-            exit={{ opacity: 0, height: 0, y: -10 }}
-            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-            className="md:hidden border-t border-border/80 glass-panel px-6 py-4 space-y-3 font-mono text-xs uppercase tracking-wider overflow-hidden"
-          >
-            <Link
-              to="/catalog"
+          <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
               onClick={() => setMobileOpen(false)}
-              className="block py-2 text-muted-foreground hover:text-foreground transition-colors"
+              className="md:hidden fixed inset-0 z-40 bg-black/50 backdrop-blur-xs top-16"
+            />
+            <motion.div
+              initial={{ opacity: 0, height: 0, y: -10 }}
+              animate={{ opacity: 1, height: 'auto', y: 0 }}
+              exit={{ opacity: 0, height: 0, y: -10 }}
+              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              className="md:hidden border-t border-border/80 glass-panel px-6 py-4 space-y-3 font-mono text-xs uppercase tracking-wider overflow-hidden relative z-50 bg-background/95 backdrop-blur-md shadow-2xl"
             >
-              Course Catalogue
-            </Link>
-            <Link
-              to="/cohorts"
-              onClick={() => setMobileOpen(false)}
-              className="block py-2 text-muted-foreground hover:text-foreground transition-colors"
-            >
-              Study Cohorts
-            </Link>
-            <Link
-              to="/dashboard"
-              onClick={() => setMobileOpen(false)}
-              className="block py-2 text-muted-foreground hover:text-foreground transition-colors"
-            >
-              Academic Overview
-            </Link>
-            <Link
-              to="/dashboard/roadmap"
-              onClick={() => setMobileOpen(false)}
-              className="block py-2 text-muted-foreground hover:text-foreground transition-colors"
-            >
-              Curriculum Roadmap
-            </Link>
-            <Link
-              to="/dashboard/credentials"
-              onClick={() => setMobileOpen(false)}
-              className="block py-2 text-muted-foreground hover:text-foreground transition-colors"
-            >
-              Verified Credentials
-            </Link>
+              <Link
+                to="/catalog"
+                onClick={() => setMobileOpen(false)}
+                className="block py-2 text-muted-foreground hover:text-foreground transition-colors"
+              >
+                Course Catalogue
+              </Link>
+              <Link
+                to="/cohorts"
+                onClick={() => setMobileOpen(false)}
+                className="block py-2 text-muted-foreground hover:text-foreground transition-colors"
+              >
+                Study Cohorts
+              </Link>
+              <Link
+                to="/dashboard"
+                onClick={() => setMobileOpen(false)}
+                className="block py-2 text-muted-foreground hover:text-foreground transition-colors"
+              >
+                Academic Overview
+              </Link>
+              <Link
+                to="/dashboard/roadmap"
+                onClick={() => setMobileOpen(false)}
+                className="block py-2 text-muted-foreground hover:text-foreground transition-colors"
+              >
+                Curriculum Roadmap
+              </Link>
+              <Link
+                to="/dashboard/credentials"
+                onClick={() => setMobileOpen(false)}
+                className="block py-2 text-muted-foreground hover:text-foreground transition-colors"
+              >
+                Verified Credentials
+              </Link>
 
-            {/* Quick Session Control in Mobile Drawer */}
-            {isAuthenticated && (
+              {/* Quick Session Control in Mobile Drawer */}
+              {isAuthenticated && (
+                <div className="pt-3 border-t border-border/60 flex items-center justify-between">
+                  <span className="text-[10px] text-muted-foreground">
+                    SESSION: {sessionAttestationId.slice(0, 11)}
+                  </span>
+                  <button
+                    onClick={() => refreshSession()}
+                    disabled={sessionStatus === 'refreshing'}
+                    className="inline-flex items-center gap-1 text-[10px] text-emerald-600 dark:text-emerald-400 font-semibold px-2 py-1 rounded border border-emerald-500/30"
+                  >
+                    <RefreshCw size={10} className={sessionStatus === 'refreshing' ? 'animate-spin' : ''} />
+                    <span>Refresh</span>
+                  </button>
+                </div>
+              )}
+
+              {/* Theme & Data-Saver Controls */}
               <div className="pt-3 border-t border-border/60 flex items-center justify-between">
-                <span className="text-[10px] text-muted-foreground">
-                  SESSION: {sessionAttestationId.slice(0, 11)}
-                </span>
+                <button onClick={toggleTheme} className="text-muted-foreground hover:text-foreground transition-colors text-[11px]">
+                  {theme === 'dark' ? '☀️ Switch to Light' : '🌙 Switch to Dark'}
+                </button>
                 <button
-                  onClick={() => refreshSession()}
-                  disabled={sessionStatus === 'refreshing'}
-                  className="inline-flex items-center gap-1 text-[10px] text-emerald-600 dark:text-emerald-400 font-semibold px-2 py-1 rounded border border-emerald-500/30"
+                  onClick={() => setDataSaverMode(!dataSaverMode)}
+                  className="text-muted-foreground hover:text-foreground transition-colors text-[11px]"
                 >
-                  <RefreshCw size={10} className={sessionStatus === 'refreshing' ? 'animate-spin' : ''} />
-                  <span>Refresh</span>
+                  Data-Saver: {dataSaverMode ? 'Active' : 'Off'}
                 </button>
               </div>
-            )}
 
-            <div className="pt-3 border-t border-border/60 flex items-center justify-between">
-              <button onClick={toggleTheme} className="text-muted-foreground hover:text-foreground transition-colors">
-                {theme === 'dark' ? 'Switch to Light' : 'Switch to Dark'}
-              </button>
-              <button
-                onClick={() => setDataSaverMode(!dataSaverMode)}
-                className="text-muted-foreground hover:text-foreground transition-colors"
-              >
-                Data-Saver: {dataSaverMode ? 'Active' : 'Off'}
-              </button>
-            </div>
-          </motion.div>
+              {/* Auth actions inside mobile drawer */}
+              {isAuthenticated ? (
+                <div className="pt-3 border-t border-border/60 space-y-2">
+                  <div className="flex items-center justify-between text-xs">
+                    <span className="text-foreground font-semibold flex items-center gap-1.5">
+                      <span className="w-2 h-2 rounded-full bg-emerald-500" />
+                      {user?.firstName || 'Amara'} {user?.lastName || 'Okafor'}
+                    </span>
+                    <span className="text-[10px] text-muted-foreground font-mono">GSDAP-2026-8841</span>
+                  </div>
+                  <button
+                    onClick={() => {
+                      setMobileOpen(false);
+                      handleLogout();
+                    }}
+                    className="w-full flex items-center justify-center gap-1.5 py-2 rounded border border-destructive/30 text-destructive hover:bg-destructive/10 text-xs font-semibold transition-colors"
+                  >
+                    <LogOut size={13} />
+                    <span>Sign Out</span>
+                  </button>
+                </div>
+              ) : (
+                <div className="pt-3 border-t border-border/60 flex items-center gap-2">
+                  <Link
+                    to="/login"
+                    onClick={() => setMobileOpen(false)}
+                    className="flex-1 py-2 text-center rounded border border-border text-foreground hover:bg-muted text-xs font-semibold transition-colors"
+                  >
+                    Sign In
+                  </Link>
+                  <Link
+                    to="/register"
+                    onClick={() => setMobileOpen(false)}
+                    className="flex-1 py-2 text-center rounded bg-foreground text-background text-xs font-semibold hover:opacity-90 transition-opacity"
+                  >
+                    Register
+                  </Link>
+                </div>
+              )}
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </header>

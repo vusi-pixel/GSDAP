@@ -1,5 +1,5 @@
 import { Outlet, NavLink, useNavigate, useLocation } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
   LayoutDashboard,
   Compass,
@@ -17,6 +17,8 @@ import {
   CheckCircle2,
   Activity,
   Radio,
+  Menu,
+  X,
 } from 'lucide-react';
 import { useAuthStore, useThemeStore } from '../../store';
 import { authApi } from '../../lib/api';
@@ -45,6 +47,11 @@ export default function DashboardLayout() {
   const navigate = useNavigate();
   const location = useLocation();
   const [showRefreshNotice, setShowRefreshNotice] = useState(false);
+  const [mobileDrawerOpen, setMobileDrawerOpen] = useState(false);
+
+  useEffect(() => {
+    setMobileDrawerOpen(false);
+  }, [location.pathname]);
 
   async function handleLogout() {
     try {
@@ -266,8 +273,17 @@ export default function DashboardLayout() {
       {/* ─── Main Content Canvas ────────────────────────────────────────────── */}
       <div className="flex-1 md:ml-72 flex flex-col min-h-screen relative z-10">
         {/* Precision Editorial Header Bar */}
-        <header className="h-14 border-b border-border/80 px-6 flex items-center justify-between glass-panel sticky top-0 z-30">
-          <div className="flex items-center gap-3">
+        <header className="h-14 border-b border-border/80 px-4 sm:px-6 flex items-center justify-between glass-panel sticky top-0 z-30">
+          <div className="flex items-center gap-2.5 sm:gap-3">
+            {/* Mobile Drawer Trigger */}
+            <button
+              onClick={() => setMobileDrawerOpen(true)}
+              className="md:hidden p-1.5 rounded border border-border/80 bg-card/70 text-foreground hover:bg-muted/70 transition-colors shadow-sm"
+              aria-label="Open mobile learner dossier menu"
+            >
+              <Menu size={18} strokeWidth={1.5} />
+            </button>
+
             <div className="flex items-center gap-1.5 font-mono text-xs">
               <span className="w-2 h-2 rounded-full bg-emerald-600 dark:bg-emerald-400" />
               <span className="text-muted-foreground hidden sm:inline">REGISTRY</span>
@@ -323,6 +339,137 @@ export default function DashboardLayout() {
             </NavLink>
           </div>
         </header>
+
+        {/* Mobile Slide-Out Drawer */}
+        <AnimatePresence>
+          {mobileDrawerOpen && (
+            <>
+              {/* Backdrop */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.2 }}
+                onClick={() => setMobileDrawerOpen(false)}
+                className="md:hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-sm"
+              />
+
+              {/* Drawer Sheet */}
+              <motion.div
+                initial={{ x: '-100%' }}
+                animate={{ x: 0 }}
+                exit={{ x: '-100%' }}
+                transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                className="md:hidden fixed inset-y-0 left-0 z-50 w-80 max-w-[85vw] bg-background border-r border-border shadow-2xl flex flex-col"
+              >
+                {/* Header with Close */}
+                <div className="p-4 border-b border-border/70 flex items-center justify-between">
+                  <div>
+                    <span className="font-mono text-[9px] uppercase tracking-widest text-muted-foreground block">
+                      Ghana Student Digital Access
+                    </span>
+                    <span className="font-serif text-lg font-semibold text-foreground">
+                      GSDAP
+                    </span>
+                  </div>
+                  <button
+                    onClick={() => setMobileDrawerOpen(false)}
+                    className="p-1.5 rounded border border-border text-muted-foreground hover:text-foreground transition-colors"
+                    aria-label="Close menu"
+                  >
+                    <X size={16} />
+                  </button>
+                </div>
+
+                {/* Learner Dossier Mini Card */}
+                <div className="p-4 border-b border-border/60 bg-muted/20">
+                  <div className="flex items-start justify-between">
+                    <div>
+                      <p className="font-serif font-semibold text-sm text-foreground">
+                        {user?.firstName || 'Amara'} {user?.lastName || 'Okafor'}
+                      </p>
+                      <p className="font-mono text-[11px] text-muted-foreground mt-0.5">
+                        ID: GSDAP-2026-8841
+                      </p>
+                    </div>
+                    <span className="inline-flex items-center gap-1 font-mono text-[10px] uppercase text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">
+                      <ShieldCheck size={11} />
+                      Verified
+                    </span>
+                  </div>
+                  <div className="mt-2 pt-2 border-t border-border/40 flex items-center justify-between font-mono text-[10px] text-muted-foreground">
+                    <span>TRACK PROGRESS</span>
+                    <span className="text-emerald-500 font-semibold">68% COMPLETE</span>
+                  </div>
+                </div>
+
+                {/* Navigation Items */}
+                <nav className="flex-1 p-3 space-y-1 overflow-y-auto">
+                  {navItems.map(({ to, icon: Icon, label, exact, code }) => (
+                    <NavLink
+                      key={to}
+                      to={to}
+                      end={exact}
+                      onClick={() => setMobileDrawerOpen(false)}
+                      className={({ isActive }) =>
+                        `flex items-center justify-between px-3 py-2.5 rounded text-xs font-mono transition-colors ${
+                          isActive
+                            ? 'bg-muted text-foreground font-semibold border-l-2 border-emerald-500 shadow-sm'
+                            : 'text-muted-foreground hover:text-foreground hover:bg-muted/40'
+                        }`
+                      }
+                    >
+                      <span className="flex items-center gap-2.5">
+                        <Icon size={16} strokeWidth={1.5} />
+                        <span>{label}</span>
+                      </span>
+                      <span className="text-[10px] opacity-60">{code}</span>
+                    </NavLink>
+                  ))}
+                </nav>
+
+                {/* Mobile Drawer Footer Controls */}
+                <div className="p-4 border-t border-border/70 space-y-3 bg-muted/10 font-mono text-xs">
+                  <div className="flex items-center justify-between">
+                    <span className="text-muted-foreground text-[11px]">THEME:</span>
+                    <button
+                      onClick={toggleTheme}
+                      className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded border border-border text-foreground hover:bg-muted text-[11px]"
+                    >
+                      {theme === 'dark' ? <Sun size={12} /> : <Moon size={12} />}
+                      <span>{theme === 'dark' ? 'Light Mode' : 'Dark Mode'}</span>
+                    </button>
+                  </div>
+
+                  <div className="flex items-center justify-between">
+                    <span className="text-muted-foreground text-[11px]">DATA-SAVER:</span>
+                    <button
+                      onClick={() => setDataSaverMode(!dataSaverMode)}
+                      className={`px-2.5 py-1 rounded border text-[11px] ${
+                        dataSaverMode
+                          ? 'border-emerald-500/50 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-semibold'
+                          : 'border-border text-muted-foreground'
+                      }`}
+                    >
+                      {dataSaverMode ? 'ACTIVE' : 'OFF'}
+                    </button>
+                  </div>
+
+                  <button
+                    onClick={() => {
+                      setMobileDrawerOpen(false);
+                      handleLogout();
+                    }}
+                    className="w-full flex items-center justify-center gap-2 py-2 mt-2 rounded border border-destructive/30 text-destructive hover:bg-destructive/10 transition-colors text-xs font-semibold"
+                  >
+                    <LogOut size={13} />
+                    <span>Sign Out of Registry</span>
+                  </button>
+                </div>
+              </motion.div>
+            </>
+          )}
+        </AnimatePresence>
 
         {/* Pronounced Session Refresh Toast Notification */}
         <AnimatePresence>

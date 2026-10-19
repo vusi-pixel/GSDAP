@@ -40,11 +40,11 @@ export default function VerifyCredentialPage() {
       </div>
 
       {/* Main Archival Record */}
-      <div className="max-w-3xl w-full mx-auto my-10">
-        <div className="border border-border bg-card p-8 md:p-12">
-          <div className="border border-border/80 p-8 space-y-8">
+      <div className="max-w-3xl w-full mx-auto my-6 sm:my-10">
+        <div className="border border-border bg-card p-4 sm:p-8 md:p-12">
+          <div className="border border-border/80 p-4 sm:p-8 space-y-6 sm:space-y-8">
             {/* Header */}
-            <div className="flex items-start justify-between border-b border-border pb-6">
+            <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 border-b border-border pb-6">
               <div>
                 <span className="font-mono text-[10px] tracking-widest uppercase text-muted-foreground block">
                   Official Verification Record
