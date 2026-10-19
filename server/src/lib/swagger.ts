@@ -4,11 +4,11 @@ const options: swaggerJsdoc.Options = {
   definition: {
     openapi: '3.0.0',
     info: {
-      title: 'One Million Coders API',
+      title: 'GSDAP API',
       version: '1.0.0',
       description: 'Learning aggregation platform API — bringing Coursera, Google, Microsoft, NVIDIA and TVET into one place.',
       contact: {
-        name: 'One Million Coders',
+        name: 'GSDAP',
         url: 'https://onemillioncoders.io',
         email: 'api@onemillioncoders.io',
       },

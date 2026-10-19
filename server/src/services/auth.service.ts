@@ -50,7 +50,7 @@ export async function register(
   const verifyUrl = `${process.env.CLIENT_URL}/verify-email?token=${verifyToken}`;
   await sendMail({
     to: email,
-    subject: 'Verify your One Million Coders email',
+    subject: 'Verify your GSDAP email',
     html: verificationEmailHtml(firstName, verifyUrl),
   }).catch((err) => logger.warn(err, 'Failed to send verification email'));
 
@@ -146,7 +146,7 @@ export async function forgotPassword(email: string) {
   const resetUrl = `${process.env.CLIENT_URL}/reset-password?token=${resetToken}`;
   await sendMail({
     to: email,
-    subject: 'Reset your One Million Coders password',
+    subject: 'Reset your GSDAP password',
     html: resetPasswordEmailHtml(user.firstName, resetUrl),
   });
 }

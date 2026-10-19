@@ -9,10 +9,10 @@ export default function Footer() {
           <div className="md:col-span-5 space-y-4">
             <div className="flex items-center gap-3">
               <div className="w-6 h-6 border border-foreground flex items-center justify-center font-mono text-[10px] font-bold">
-                OM
+                GS
               </div>
               <span className="font-serif text-lg font-semibold tracking-tight text-foreground">
-                One Million Coders
+                GSDAP
               </span>
             </div>
 
@@ -90,7 +90,7 @@ export default function Footer() {
 
         {/* Bottom Colophon Bar */}
         <div className="mt-14 pt-8 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-[11px] text-muted-foreground">
-          <p>© 2026 One Million Coders Consortium. Public Service Educational Framework.</p>
+          <p>© 2026 GSDAP (Ghana Student Digital Access Programme) Consortium. Public Service Educational Framework.</p>
           <div className="flex items-center gap-4">
             <Link to="/settings" className="hover:text-foreground transition-colors">
               Data Sovereignty

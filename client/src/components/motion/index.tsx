@@ -1,5 +1,5 @@
 /**
- * Motion primitives for One Million Coders
+ * Motion primitives for GSDAP (Ghana Student Digital Access Programme)
  * Enhanced with pronounced, high-fidelity cinematic easing,
  * subtle blur reveals, and interconnected visual energy.
  * All animations respect prefers-reduced-motion.

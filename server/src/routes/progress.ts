@@ -79,7 +79,7 @@ router.post('/', validate(ProgressEventSchema), async (req: Request, res: Respon
             type: 'certificate',
             title: `Certificate of Completion: ${course.title}`,
             description: `Successfully completed ${course.title} by ${course.provider.displayName}`,
-            issuer: 'One Million Coders',
+            issuer: 'GSDAP',
           },
           update: {},
         });

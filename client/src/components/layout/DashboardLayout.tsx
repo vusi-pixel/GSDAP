@@ -86,10 +86,10 @@ export default function DashboardLayout() {
           </div>
           <NavLink to="/dashboard" className="block group">
             <span className="font-mono text-[10px] tracking-widest text-muted-foreground uppercase block mb-1">
-              National & Global Registry
+              Ghana Student Digital Access Programme
             </span>
             <span className="font-serif text-xl tracking-tight font-semibold block text-foreground group-hover:text-brand-500 transition-colors">
-              One Million Coders
+              GSDAP
             </span>
           </NavLink>
         </div>
@@ -102,7 +102,7 @@ export default function DashboardLayout() {
                 {user?.firstName || 'Amara'} {user?.lastName || 'Okafor'}
               </p>
               <p className="font-mono text-[11px] text-muted-foreground mt-0.5 flex items-center gap-1">
-                <span>ID: OMC-2026-8841</span>
+                <span>ID: GSDAP-2026-8841</span>
               </p>
             </div>
             <span className="inline-flex items-center gap-1 font-mono text-[10px] uppercase tracking-wider text-emerald-700 dark:text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-sm border border-emerald-500/20 shadow-sm">

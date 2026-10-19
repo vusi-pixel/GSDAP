@@ -149,7 +149,7 @@ export default function CohortsPage() {
 
         <FadeInStagger staggerDelay={0.1} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {cohorts.map((cohort: any) => {
-            const code = cohort.inviteCode || 'OMC-COHORT';
+            const code = cohort.inviteCode || 'GSDAP-COHORT';
             const mentor = cohort.mentorName || cohort.mentor?.firstName || 'Faculty Advisor';
             const count = cohort.membersCount || cohort._count?.members || 32;
             const max = cohort.maxMembers || 50;
@@ -179,7 +179,7 @@ export default function CohortsPage() {
 
                     <div className="pt-2 font-mono text-xs space-y-1 text-muted-foreground border-t border-border/40">
                       <p className="text-foreground text-[11px] truncate font-medium">Mentor: {mentor}</p>
-                      <p className="text-[10px] truncate">{cohort.institution || 'OMC Academic Council'}</p>
+                      <p className="text-[10px] truncate">{cohort.institution || 'GSDAP Academic Council'}</p>
                     </div>
                   </div>
 

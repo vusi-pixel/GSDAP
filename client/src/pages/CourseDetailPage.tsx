@@ -77,7 +77,7 @@ export default function CourseDetailPage() {
     apiData ||
     DEFAULT_COURSE_DETAILS[id || ''] || {
       id: id || 'crs-default',
-      code: 'OMC-SYL-101',
+      code: 'GSDAP-SYL-101',
       title: 'Architecting with Google Compute Engine & Kubernetes',
       description:
         'A comprehensive systems engineering program on designing robust, high-availability, fault-tolerant infrastructure on Google Cloud Platform. Topics include VPC routing, Kubernetes pod auto-scaling, Istio service mesh deployments, IAM identity federation, and automated disaster recovery protocols.',
@@ -118,7 +118,7 @@ export default function CourseDetailPage() {
           </Link>
           <span className="font-mono text-xs text-muted-foreground uppercase tracking-widest flex items-center gap-1.5">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-            SYLLABUS REF: {course.code || 'OMC-2026-SYL'}
+            SYLLABUS REF: {course.code || 'GSDAP-2026-SYL'}
           </span>
         </div>
       </div>

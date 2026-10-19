@@ -44,7 +44,7 @@ export const useAuthStore = create<AuthState>()(
       isAuthenticated: true,
       sessionStatus: 'active',
       lastRefreshedAt: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-      sessionAttestationId: 'OMC-SES-' + Math.random().toString(36).substring(2, 8).toUpperCase(),
+      sessionAttestationId: 'GSDAP-SES-' + Math.random().toString(36).substring(2, 8).toUpperCase(),
       sessionRefreshCount: 1,
 
       setAuth: (user, accessToken) =>
@@ -68,7 +68,7 @@ export const useAuthStore = create<AuthState>()(
             accessToken: newToken,
             sessionStatus: 'refreshed',
             lastRefreshedAt: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' }),
-            sessionAttestationId: 'OMC-SES-' + Math.random().toString(36).substring(2, 8).toUpperCase(),
+            sessionAttestationId: 'GSDAP-SES-' + Math.random().toString(36).substring(2, 8).toUpperCase(),
             sessionRefreshCount: state.sessionRefreshCount + 1,
           }));
           setTimeout(() => {
@@ -78,12 +78,12 @@ export const useAuthStore = create<AuthState>()(
         } catch {
           // Graceful fallback for offline / mock / dev demo sessions
           await new Promise((r) => setTimeout(r, 650));
-          const simulatedToken = 'omc-jwt-' + Math.random().toString(36).substring(2, 10);
+          const simulatedToken = 'gsdap-jwt-' + Math.random().toString(36).substring(2, 10);
           set((state) => ({
             accessToken: simulatedToken,
             sessionStatus: 'refreshed',
             lastRefreshedAt: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' }),
-            sessionAttestationId: 'OMC-SES-' + Math.random().toString(36).substring(2, 8).toUpperCase(),
+            sessionAttestationId: 'GSDAP-SES-' + Math.random().toString(36).substring(2, 8).toUpperCase(),
             sessionRefreshCount: state.sessionRefreshCount + 1,
           }));
           setTimeout(() => {

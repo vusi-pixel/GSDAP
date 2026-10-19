@@ -145,7 +145,7 @@ export default function DashboardPage() {
                   National Learner Registry
                 </span>
                 <span>·</span>
-                <span>Ref: OMC-2026-8841</span>
+                <span>Ref: GSDAP-2026-8841</span>
                 <span>·</span>
                 <button
                   onClick={() => refreshSession()}

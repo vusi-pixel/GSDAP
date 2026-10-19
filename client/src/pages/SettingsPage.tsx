@@ -97,12 +97,12 @@ export default function SettingsPage() {
       const url = URL.createObjectURL(new Blob([res.data]));
       const a = document.createElement('a');
       a.href = url;
-      a.download = `omc-dossier-${user?.id || 'learner'}.json`;
+      a.download = `gsdap-dossier-${user?.id || 'learner'}.json`;
       a.click();
     } catch {
       // Create mock export blob for dev
       const dataStr = JSON.stringify(
-        { user, exportTimestamp: new Date().toISOString(), registryId: 'OMC-2026-8841' },
+        { user, exportTimestamp: new Date().toISOString(), registryId: 'GSDAP-2026-8841' },
         null,
         2
       );
@@ -209,7 +209,7 @@ export default function SettingsPage() {
                     className="w-full text-xs font-mono px-3.5 py-2.5 bg-muted/40 border border-border/80 rounded text-muted-foreground cursor-not-allowed"
                   />
                   <p className="text-[11px] text-muted-foreground font-mono mt-1">
-                    Registry email verified with OMC Identity Board (ID: OMC-2026-8841).
+                    Registry email verified with GSDAP Identity Board (ID: GSDAP-2026-8841).
                   </p>
                 </div>
 

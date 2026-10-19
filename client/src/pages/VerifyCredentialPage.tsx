@@ -12,11 +12,11 @@ export default function VerifyCredentialPage() {
   });
 
   // Provide realistic validation response for preview/demo codes
-  const isDemo = code?.startsWith('OMC-') || code === 'demo' || !isError;
+  const isDemo = code?.startsWith('GSDAP-') || code?.startsWith('OMC-') || code === 'demo' || !isError;
   const credentialInfo = data?.credential || {
     title: 'Professional Cloud Solutions Architect',
-    recipient: 'Amara Okafor',
-    issuer: 'Google Cloud & OMC National Academic Board',
+    recipient: 'Jerry Justice Mensah',
+    issuer: 'Google Cloud & GSDAP National Academic Board',
     issuedAt: '2026-09-18T10:00:00Z',
     type: 'Accredited Professional Diploma',
     course: 'Architecting with Google Compute Engine & Kubernetes',
@@ -112,7 +112,7 @@ export default function VerifyCredentialPage() {
 
             {/* Footer Sign-off */}
             <div className="pt-6 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-xs text-muted-foreground">
-              <span>Cryptographic consensus verified on One Million Coders Registry node</span>
+              <span>Cryptographic consensus verified on GSDAP Registry node</span>
               <button
                 onClick={() => window.print()}
                 className="inline-flex items-center gap-1.5 border border-border px-3 py-1.5 rounded bg-background hover:bg-muted text-foreground transition-colors"
@@ -127,7 +127,7 @@ export default function VerifyCredentialPage() {
 
       {/* Page Footer */}
       <div className="max-w-3xl w-full mx-auto text-center font-mono text-xs text-muted-foreground">
-        © 2026 One Million Coders · Public Service & Educational Technology Consortium
+        © 2026 GSDAP (Ghana Student Digital Access Programme) · Public Service & Educational Technology Consortium
       </div>
     </div>
   );

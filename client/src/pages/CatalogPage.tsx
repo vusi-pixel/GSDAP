@@ -798,7 +798,7 @@ export default function CatalogPage() {
                 <tbody className="divide-y divide-border/60">
                   {filteredCourses.map((c: any) => {
                     const providerName = c.provider?.displayName || 'National Partner';
-                    const code = c.code || 'OMC-CRS';
+                    const code = c.code || 'GSDAP-CRS';
                     const duration = c.durationHours ? `${c.durationHours} hrs` : 'Self-paced';
 
                     return (

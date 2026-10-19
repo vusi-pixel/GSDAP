@@ -54,14 +54,14 @@ export default function Navbar() {
           <Link to="/" className="flex items-center gap-3 group">
             <div className="w-8 h-8 border border-foreground/80 rounded flex items-center justify-center font-mono text-xs font-bold text-foreground bg-card/80 group-hover:border-emerald-500 group-hover:text-emerald-500 transition-colors shadow-sm relative">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 dark:bg-emerald-400 absolute -top-0.5 -right-0.5" />
-              OM
+              GS
             </div>
             <div>
               <span className="font-serif text-lg font-semibold tracking-tight text-foreground block leading-none group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
-                One Million Coders
+                GSDAP
               </span>
               <span className="font-mono text-[9px] uppercase tracking-widest text-muted-foreground block mt-0.5">
-                National Learning Registry
+                Ghana Student Digital Access Programme
               </span>
             </div>
           </Link>

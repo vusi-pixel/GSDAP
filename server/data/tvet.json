@@ -1,4 +1,4 @@
-[
+  [
   {
     "externalId": "tvet-web-development",
     "title": "Web Development Fundamentals",
@@ -19,7 +19,7 @@
     "externalId": "tvet-python-programming",
     "title": "Python Programming for Beginners",
     "description": "Start your programming journey with Kenya's most in-demand language. Covers Python syntax, data types, control flow, functions, modules, file I/O, and exception handling. Learn to work with CSV data, build simple automation scripts, and write introductory data analysis code with Pandas. Delivered in classroom and offline-capable mobile format.",
-    "level": "beginner",
+    "level": "beginner",  
     "durationHours": 90,
     "language": "en",
     "skills": ["Python", "Programming Fundamentals", "Pandas", "Data Analysis", "File I/O", "Automation", "Git", "Problem Solving"],

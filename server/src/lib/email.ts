@@ -39,7 +39,7 @@ export function verificationEmailHtml(name: string, url: string) {
     <head><meta charset="utf-8"></head>
     <body style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
       <div style="background: linear-gradient(135deg, #6366f1, #8b5cf6); padding: 30px; border-radius: 12px; text-align: center; margin-bottom: 30px;">
-        <h1 style="color: white; margin: 0; font-size: 28px;">One Million Coders</h1>
+        <h1 style="color: white; margin: 0; font-size: 28px;">GSDAP</h1>
         <p style="color: rgba(255,255,255,0.9); margin: 8px 0 0;">Your learning journey starts here</p>
       </div>
       <h2>Welcome, ${name}! 🎉</h2>
@@ -62,7 +62,7 @@ export function resetPasswordEmailHtml(name: string, url: string) {
     <head><meta charset="utf-8"></head>
     <body style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
       <div style="background: linear-gradient(135deg, #6366f1, #8b5cf6); padding: 30px; border-radius: 12px; text-align: center; margin-bottom: 30px;">
-        <h1 style="color: white; margin: 0;">One Million Coders</h1>
+        <h1 style="color: white; margin: 0;">GSDAP</h1>
       </div>
       <h2>Reset Your Password</h2>
       <p>Hi ${name}, we received a request to reset your password.</p>

@@ -59,14 +59,14 @@ export default function LoginPage() {
         <div className="text-center space-y-2">
           <Link to="/" className="inline-flex items-center gap-2.5">
             <div className="w-7 h-7 border border-foreground flex items-center justify-center font-mono text-xs font-bold">
-              OM
+              GS
             </div>
             <span className="font-serif text-xl font-semibold tracking-tight text-foreground">
-              One Million Coders
+              GSDAP
             </span>
           </Link>
           <p className="font-mono text-xs text-muted-foreground uppercase tracking-widest">
-            National Learner Registry Authentication
+            Ghana Student Digital Access Programme
           </p>
         </div>
 

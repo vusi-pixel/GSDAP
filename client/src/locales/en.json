@@ -13,7 +13,7 @@
     "logout": "Log Out"
   },
   "hero": {
-    "title": "One Million Coders",
+    "title": "GSDAP (Ghana Student Digital Access Programme)",
     "subtitle": "World-class tech education from Coursera, Google, Microsoft, NVIDIA and TVET in one place.",
     "cta_primary": "Start Learning Free",
     "cta_secondary": "Explore Catalog",
@@ -90,7 +90,7 @@
     "download": "Download",
     "share": "Share",
     "issued": "Issued {{date}}",
-    "verified_message": "This credential is verified by One Million Coders"
+    "verified_message": "This credential is verified by GSDAP (Ghana Student Digital Access Programme)"
   },
   "settings": {
     "title": "Settings",

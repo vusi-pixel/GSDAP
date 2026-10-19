@@ -22,7 +22,7 @@ import { FadeIn, FadeInStagger, StaggerItem } from '../../components/motion';
 const DEFAULT_PATHWAY = {
   id: 'path-fsd-cloud',
   title: 'National Diploma in Cloud Engineering & Scalable Systems',
-  code: 'CURR-OMC-2026-FSD',
+  code: 'CURR-GSDAP-2026-FSD',
   curriculumBoard: 'TVET National Directorate in Partnership with Google & NVIDIA',
   totalHours: 240,
   completedHours: 142.5,
@@ -124,7 +124,7 @@ const DEFAULT_PATHWAY = {
           id: 'mod-302',
           code: 'CS-302',
           title: 'Industry Capstone Project & Peer Defense Examination',
-          provider: 'OMC National Academic Board',
+          provider: 'GSDAP National Academic Board',
           hours: 42,
           status: 'pending',
           unitNotes: 'Convenes November 14, 2026',

@@ -160,7 +160,7 @@ const CURRICULUM_PILLARS = [
     code: '01',
     title: 'Aggregated Global & Vocational Curricula',
     description:
-      'Rather than isolating coursework across disjointed corporate portals, One Million Coders unifies official syllabi from Google, Microsoft, NVIDIA, and TVET colleges into a unified academic progression.',
+      'Rather than isolating coursework across disjointed corporate portals, GSDAP (Ghana Student Digital Access Programme) unifies official syllabi from Google, Microsoft, NVIDIA, and TVET colleges into a unified academic progression.',
   },
   {
     code: '02',
@@ -514,7 +514,7 @@ export default function LandingPage() {
                   </div>
 
                   <div className="pt-4 border-t border-border/60 font-mono text-xs text-muted-foreground flex items-center justify-between">
-                    <span>STANDARD SPECIFICATION // OMC-REQ-{pillar.code}</span>
+                    <span>STANDARD SPECIFICATION // GSDAP-REQ-{pillar.code}</span>
                     <span className="text-emerald-600 dark:text-emerald-400 font-semibold text-[10px]">VERIFIED NODE</span>
                   </div>
                 </div>

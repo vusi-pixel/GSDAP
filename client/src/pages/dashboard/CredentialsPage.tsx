@@ -22,9 +22,9 @@ const DEFAULT_CREDENTIALS = [
     id: 'cred-001',
     type: 'diploma',
     title: 'Professional Cloud Solutions Architect',
-    issuer: 'Google Cloud & OMC National Academic Board',
+    issuer: 'Google Cloud & GSDAP National Academic Board',
     issuedAt: '2026-09-18T10:00:00Z',
-    verifyCode: 'OMC-GCP-8841-A',
+    verifyCode: 'GSDAP-GCP-8841-A',
     verifyHash: '0x7F4B2E891C00A195E',
     grade: 'Passed with Distinction (96%)',
     courseTitle: 'Architecting with Google Compute Engine & Kubernetes',
@@ -36,7 +36,7 @@ const DEFAULT_CREDENTIALS = [
     title: 'Enterprise Identity & Cloud Governance Associate',
     issuer: 'Microsoft Learn & Technical Vocational Training Board',
     issuedAt: '2026-08-04T14:30:00Z',
-    verifyCode: 'OMC-MSFT-4912-B',
+    verifyCode: 'GSDAP-MSFT-4912-B',
     verifyHash: '0x3E1280B4D88C24F19',
     grade: 'Certified (92%)',
     courseTitle: 'Enterprise Identity & Access Governance with Azure Entra',
@@ -48,7 +48,7 @@ const DEFAULT_CREDENTIALS = [
     title: 'Distributed Systems & Microservices in Go',
     issuer: 'Duke University via Coursera',
     issuedAt: '2026-07-12T09:15:00Z',
-    verifyCode: 'OMC-DUKE-2091-C',
+    verifyCode: 'GSDAP-DUKE-2091-C',
     verifyHash: '0x992B45A10E487C330',
     grade: 'Passed (98%)',
     courseTitle: 'Scalable Distributed Systems & Microservices in Go',
@@ -133,7 +133,7 @@ export default function CredentialsPage() {
           <div className="grid grid-cols-1 sm:grid-cols-4 gap-3 text-xs font-mono">
             <div className="p-3 rounded border border-border/70 bg-muted/20">
               <span className="text-[10px] text-muted-foreground block uppercase">Genesis Node</span>
-              <span className="text-foreground font-semibold mt-0.5 block truncate">OMC National Board</span>
+              <span className="text-foreground font-semibold mt-0.5 block truncate">GSDAP National Board</span>
             </div>
             <div className="p-3 rounded border border-border/70 bg-muted/20">
               <span className="text-[10px] text-muted-foreground block uppercase">Institutional Seal</span>
