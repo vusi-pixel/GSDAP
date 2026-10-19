@@ -1,0 +1,59 @@
+{
+  "nav": {
+    "home": "Nyumbani",
+    "catalog": "Katalogi",
+    "dashboard": "Dashibodi",
+    "paths": "Njia za Kujifunza",
+    "credentials": "Vyeti",
+    "cohorts": "Vikundi",
+    "settings": "Mipangilio",
+    "admin": "Msimamizi",
+    "login": "Ingia",
+    "signup": "Jisajili",
+    "logout": "Toka"
+  },
+  "hero": {
+    "title": "Wamilioni Mmoja wa Waandaaji",
+    "subtitle": "Elimu ya teknolojia ya daraja la juu — Coursera, Google, Microsoft, NVIDIA na TVET mahali pamoja.",
+    "cta_primary": "Anza Kujifunza Bure",
+    "cta_secondary": "Chunguza Katalogi",
+    "counter_label": "wanafunzi na kuendelea",
+    "milestone": "njiani hadi 1,000,000"
+  },
+  "auth": {
+    "login_title": "Karibu tena",
+    "register_title": "Tengeneza akaunti yako",
+    "email": "Anwani ya barua pepe",
+    "password": "Nywila",
+    "firstName": "Jina la kwanza",
+    "lastName": "Jina la familia",
+    "login_btn": "Ingia",
+    "register_btn": "Tengeneza Akaunti",
+    "forgot_password": "Umesahau nywila?",
+    "no_account": "Huna akaunti?",
+    "have_account": "Una akaunti tayari?",
+    "or_google": "Au endelea na Google"
+  },
+  "common": {
+    "loading": "Inapakia...",
+    "error": "Kuna hitilafu",
+    "retry": "Jaribu tena",
+    "save": "Hifadhi",
+    "cancel": "Ghairi",
+    "close": "Funga",
+    "back": "Rudi",
+    "next": "Ijayo",
+    "search": "Tafuta",
+    "filter": "Chuja",
+    "clear": "Futa",
+    "view_all": "Ona Zote",
+    "not_found": "Ukurasa haupatikani",
+    "go_home": "Nenda Nyumbani"
+  },
+  "levels": {
+    "beginner": "Mwanzo",
+    "intermediate": "Kati",
+    "advanced": "Juu",
+    "all_levels": "Viwango Vyote"
+  }
+}

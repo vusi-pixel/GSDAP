@@ -1,0 +1,139 @@
+{
+  "nav": {
+    "home": "Home",
+    "catalog": "Catalog",
+    "dashboard": "Dashboard",
+    "paths": "Learning Paths",
+    "credentials": "Credentials",
+    "cohorts": "Cohorts",
+    "settings": "Settings",
+    "admin": "Admin",
+    "login": "Log In",
+    "signup": "Sign Up",
+    "logout": "Log Out"
+  },
+  "hero": {
+    "title": "One Million Coders",
+    "subtitle": "World-class tech education from Coursera, Google, Microsoft, NVIDIA and TVET in one place.",
+    "cta_primary": "Start Learning Free",
+    "cta_secondary": "Explore Catalog",
+    "counter_label": "learners and counting",
+    "milestone": "on our way to 1,000,000"
+  },
+  "auth": {
+    "login_title": "Welcome back",
+    "register_title": "Create your account",
+    "email": "Email address",
+    "password": "Password",
+    "firstName": "First name",
+    "lastName": "Last name",
+    "login_btn": "Log In",
+    "register_btn": "Create Account",
+    "forgot_password": "Forgot password?",
+    "no_account": "Don't have an account?",
+    "have_account": "Already have an account?",
+    "or_google": "Or continue with Google"
+  },
+  "onboarding": {
+    "title": "Personalize your journey",
+    "subtitle": "Tell us a bit about yourself so we can build your perfect roadmap.",
+    "skill_level": "What's your current skill level?",
+    "goals": "What do you want to learn? (select up to 5)",
+    "region": "Where are you based?",
+    "language": "Preferred language",
+    "data_saver": "Enable data saver mode",
+    "data_saver_desc": "Reduces images and animations for low bandwidth connections",
+    "next": "Next",
+    "back": "Back",
+    "finish": "Start Learning"
+  },
+  "catalog": {
+    "title": "Course Catalog",
+    "subtitle": "Discover courses from the world's top providers",
+    "search_placeholder": "Search courses, skills...",
+    "filters": "Filters",
+    "provider": "Provider",
+    "level": "Level",
+    "language": "Language",
+    "free_only": "Free only",
+    "certificate": "Certificate available",
+    "sort_by": "Sort by",
+    "no_results": "No courses found. Try different filters.",
+    "loading": "Loading courses..."
+  },
+  "course": {
+    "enroll": "Mark as Enrolled",
+    "start_on": "Start on {{provider}}",
+    "enrolled": "Enrolled",
+    "duration": "{{hours}} hours",
+    "free": "Free",
+    "certificate": "Certificate",
+    "skills": "Skills you'll gain"
+  },
+  "dashboard": {
+    "title": "My Dashboard",
+    "welcome": "Welcome back, {{name}}!",
+    "current_path": "Current Path",
+    "next_step": "Next Step",
+    "streak": "{{days}} day streak",
+    "hours": "{{hours}} hours",
+    "badges": "{{count}} badges",
+    "in_progress": "In Progress",
+    "completed": "Completed",
+    "no_enrollments": "You haven't enrolled in any courses yet.",
+    "browse_catalog": "Browse the Catalog"
+  },
+  "credentials": {
+    "title": "My Credentials",
+    "subtitle": "Your earned certificates and badges",
+    "verify": "Verify",
+    "download": "Download",
+    "share": "Share",
+    "issued": "Issued {{date}}",
+    "verified_message": "This credential is verified by One Million Coders"
+  },
+  "settings": {
+    "title": "Settings",
+    "profile": "Profile",
+    "security": "Security & Privacy",
+    "notifications": "Notifications",
+    "language": "Language",
+    "theme": "Appearance",
+    "data_saver": "Data Saver",
+    "delete_account": "Delete Account",
+    "export_data": "Export My Data"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "retry": "Try again",
+    "save": "Save",
+    "cancel": "Cancel",
+    "close": "Close",
+    "back": "Back",
+    "next": "Next",
+    "search": "Search",
+    "filter": "Filter",
+    "clear": "Clear",
+    "view_all": "View All",
+    "read_more": "Read more",
+    "share": "Share",
+    "copy_link": "Copy link",
+    "copied": "Copied!",
+    "not_found": "Page not found",
+    "go_home": "Go home"
+  },
+  "providers": {
+    "coursera": "Coursera",
+    "google": "Google",
+    "microsoft": "Microsoft",
+    "nvidia": "NVIDIA",
+    "tvet": "TVET"
+  },
+  "levels": {
+    "beginner": "Beginner",
+    "intermediate": "Intermediate",
+    "advanced": "Advanced",
+    "all_levels": "All Levels"
+  }
+}

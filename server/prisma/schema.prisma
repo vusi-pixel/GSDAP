@@ -1,0 +1,420 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// ENUMS
+// ─────────────────────────────────────────────────────────────────────────────
+
+enum Role {
+  learner
+  mentor
+  tvet_admin
+  super_admin
+}
+
+enum SkillLevel {
+  beginner
+  intermediate
+  advanced
+}
+
+enum ProviderName {
+  coursera
+  google
+  microsoft
+  nvidia
+  tvet
+}
+
+enum CourseLevel {
+  beginner
+  intermediate
+  advanced
+  all_levels
+}
+
+enum EnrollmentStatus {
+  enrolled
+  in_progress
+  completed
+  dropped
+}
+
+enum CredentialType {
+  badge
+  certificate
+}
+
+enum CohortStatus {
+  active
+  completed
+  archived
+}
+
+enum SyncStatus {
+  pending
+  running
+  success
+  failed
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// USERS & PROFILES
+// ─────────────────────────────────────────────────────────────────────────────
+
+model User {
+  id                String    @id @default(uuid())
+  email             String    @unique
+  passwordHash      String?
+  firstName         String
+  lastName          String
+  role              Role      @default(learner)
+  emailVerified     Boolean   @default(false)
+  verifyToken       String?
+  verifyTokenExpiry DateTime?
+  resetToken        String?
+  resetTokenExpiry  DateTime?
+  googleId          String?   @unique
+  isActive          Boolean   @default(true)
+  lastLoginAt       DateTime?
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+
+  profile      Profile?
+  enrollments  Enrollment[]
+  credentials  Credential[]
+  cohortMemberships CohortMember[]
+  managedCohorts    Cohort[]       @relation("MentorCohorts")
+  progressEvents    ProgressEvent[]
+  refreshTokens     RefreshToken[]
+  institution       InstitutionStaff?
+
+  @@index([email])
+  @@index([googleId])
+  @@index([role])
+  @@map("users")
+}
+
+model RefreshToken {
+  id        String   @id @default(uuid())
+  token     String   @unique
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+  revoked   Boolean  @default(false)
+
+  @@index([userId])
+  @@index([token])
+  @@map("refresh_tokens")
+}
+
+model Profile {
+  id                   String     @id @default(uuid())
+  userId               String     @unique
+  user                 User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  avatarUrl            String?
+  bio                  String?
+  region               String?
+  country              String?
+  skillLevel           SkillLevel?
+  goals                String[]   @default([])
+  preferredLanguage    String     @default("en")
+  dataSaverMode        Boolean    @default(false)
+  notificationsEnabled Boolean    @default(true)
+  totalHours           Float      @default(0)
+  streakDays           Int        @default(0)
+  lastActiveDate       DateTime?
+  onboardingCompleted  Boolean    @default(false)
+  createdAt            DateTime   @default(now())
+  updatedAt            DateTime   @updatedAt
+
+  @@index([userId])
+  @@index([region])
+  @@map("profiles")
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// PROVIDERS & INSTITUTIONS
+// ─────────────────────────────────────────────────────────────────────────────
+
+model Provider {
+  id          String       @id @default(uuid())
+  name        ProviderName @unique
+  displayName String
+  logoUrl     String?
+  website     String?
+  description String?
+  isActive    Boolean      @default(true)
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+
+  courses  Course[]
+  syncLogs SyncLog[]
+
+  @@map("providers")
+}
+
+model Institution {
+  id          String   @id @default(uuid())
+  name        String
+  country     String
+  region      String?
+  website     String?
+  logoUrl     String?
+  description String?
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  staff   InstitutionStaff[]
+  courses Course[]
+  cohorts Cohort[]
+
+  @@index([country])
+  @@map("institutions")
+}
+
+model InstitutionStaff {
+  id            String      @id @default(uuid())
+  userId        String      @unique
+  user          User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  institutionId String
+  institution   Institution @relation(fields: [institutionId], references: [id], onDelete: Cascade)
+  createdAt     DateTime    @default(now())
+
+  @@map("institution_staff")
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// COURSES
+// ─────────────────────────────────────────────────────────────────────────────
+
+model Course {
+  id                   String      @id @default(uuid())
+  externalId           String?
+  providerId           String
+  provider             Provider    @relation(fields: [providerId], references: [id])
+  institutionId        String?
+  institution          Institution? @relation(fields: [institutionId], references: [id])
+  title                String
+  description          String
+  level                CourseLevel @default(all_levels)
+  durationHours        Float?
+  language             String      @default("en")
+  skills               String[]    @default([])
+  url                  String
+  cost                 Float       @default(0)
+  certificateAvailable Boolean     @default(false)
+  thumbnailUrl         String?
+  instructor           String?
+  rating               Float?
+  enrollmentCount      Int?
+  isActive             Boolean     @default(true)
+  isFeatured           Boolean     @default(false)
+  createdAt            DateTime    @default(now())
+  updatedAt            DateTime    @updatedAt
+
+  enrollments Enrollment[]
+  pathSteps   PathStep[]
+
+  @@unique([providerId, externalId])
+  @@index([providerId])
+  @@index([level])
+  @@index([language])
+  @@index([cost])
+  @@index([title])
+  @@index([isActive])
+  @@map("courses")
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// LEARNING PATHS
+// ─────────────────────────────────────────────────────────────────────────────
+
+model LearningPath {
+  id          String   @id @default(uuid())
+  title       String
+  description String?
+  goal        String
+  isPublic    Boolean  @default(false)
+  isOfficial  Boolean  @default(false)
+  createdById String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  steps       PathStep[]
+  enrollments Enrollment[]
+  cohorts     Cohort[]
+
+  @@index([goal])
+  @@index([isPublic])
+  @@map("learning_paths")
+}
+
+model PathStep {
+  id       String       @id @default(uuid())
+  pathId   String
+  path     LearningPath @relation(fields: [pathId], references: [id], onDelete: Cascade)
+  courseId String
+  course   Course       @relation(fields: [courseId], references: [id])
+  order    Int
+  required Boolean      @default(true)
+  notes    String?
+
+  @@unique([pathId, order])
+  @@index([pathId])
+  @@map("path_steps")
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// ENROLLMENTS & PROGRESS
+// ─────────────────────────────────────────────────────────────────────────────
+
+model Enrollment {
+  id           String           @id @default(uuid())
+  userId       String
+  user         User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  courseId     String
+  course       Course           @relation(fields: [courseId], references: [id])
+  pathId       String?
+  path         LearningPath?    @relation(fields: [pathId], references: [id])
+  cohortId     String?
+  cohort       Cohort?          @relation(fields: [cohortId], references: [id])
+  status       EnrollmentStatus @default(enrolled)
+  percentComplete Int           @default(0)
+  hoursSpent   Float            @default(0)
+  startedAt    DateTime?
+  completedAt  DateTime?
+  createdAt    DateTime         @default(now())
+  updatedAt    DateTime         @updatedAt
+
+  progressEvents ProgressEvent[]
+  credential     Credential?
+
+  @@unique([userId, courseId])
+  @@index([userId])
+  @@index([courseId])
+  @@index([status])
+  @@map("enrollments")
+}
+
+model ProgressEvent {
+  id              String     @id @default(uuid())
+  userId          String
+  user            User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  enrollmentId    String
+  enrollment      Enrollment @relation(fields: [enrollmentId], references: [id], onDelete: Cascade)
+  eventType       String     // started | progress | completed
+  percentComplete Int?
+  hoursSpent      Float?
+  notes           String?
+  proofUrl        String?
+  createdAt       DateTime   @default(now())
+
+  @@index([enrollmentId])
+  @@index([userId])
+  @@map("progress_events")
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// COHORTS
+// ─────────────────────────────────────────────────────────────────────────────
+
+model Cohort {
+  id            String      @id @default(uuid())
+  name          String
+  description   String?
+  mentorId      String?
+  mentor        User?       @relation("MentorCohorts", fields: [mentorId], references: [id])
+  institutionId String?
+  institution   Institution? @relation(fields: [institutionId], references: [id])
+  pathId        String?
+  path          LearningPath? @relation(fields: [pathId], references: [id])
+  status        CohortStatus @default(active)
+  maxMembers    Int?
+  startDate     DateTime?
+  endDate       DateTime?
+  inviteCode    String?      @unique
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+
+  members     CohortMember[]
+  enrollments Enrollment[]
+
+  @@index([mentorId])
+  @@index([institutionId])
+  @@index([status])
+  @@map("cohorts")
+}
+
+model CohortMember {
+  id        String   @id @default(uuid())
+  cohortId  String
+  cohort    Cohort   @relation(fields: [cohortId], references: [id], onDelete: Cascade)
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  joinedAt  DateTime @default(now())
+  score     Int      @default(0)
+
+  @@unique([cohortId, userId])
+  @@index([cohortId])
+  @@index([userId])
+  @@map("cohort_members")
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// CREDENTIALS & BADGES
+// ─────────────────────────────────────────────────────────────────────────────
+
+model Credential {
+  id           String         @id @default(uuid())
+  userId       String
+  user         User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  enrollmentId String?        @unique
+  enrollment   Enrollment?    @relation(fields: [enrollmentId], references: [id])
+  type         CredentialType
+  title        String
+  description  String?
+  issuer       String         @default("One Million Coders")
+  badgeUrl     String?
+  verifyCode   String         @unique @default(uuid())
+  issuedAt     DateTime       @default(now())
+  expiresAt    DateTime?
+  metadata     Json?
+
+  @@index([userId])
+  @@index([verifyCode])
+  @@map("credentials")
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// SYNC LOGS
+// ─────────────────────────────────────────────────────────────────────────────
+
+model SyncLog {
+  id             String     @id @default(uuid())
+  providerId     String
+  provider       Provider   @relation(fields: [providerId], references: [id])
+  status         SyncStatus @default(pending)
+  coursesAdded   Int        @default(0)
+  coursesUpdated Int        @default(0)
+  coursesRemoved Int        @default(0)
+  errorMessage   String?
+  startedAt      DateTime   @default(now())
+  finishedAt     DateTime?
+  triggeredBy    String?    // manual | scheduled
+
+  @@index([providerId])
+  @@index([status])
+  @@map("sync_logs")
+}
