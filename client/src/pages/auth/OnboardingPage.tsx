@@ -89,7 +89,7 @@ export default function OnboardingPage() {
         <div className="text-center mb-8">
           <div className="flex items-center justify-center gap-2 mb-4">
             <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-500 to-accent-500 flex items-center justify-center">
-              <span className="text-white font-black">OM</span>
+              <span className="text-white font-black">GS</span>
             </div>
           </div>
           <h1 className="font-display text-3xl font-bold mb-2">Personalise your journey</h1>

@@ -15,24 +15,24 @@
 */
 @layer base {
   :root {
-    /* Background */
-    --bg:        36 20% 97%;   /* #f7f5f2 warm off-white */
-    --bg-subtle: 36 15% 93%;   /* #edeae5 */
+    /* Background: Crisp modern light canvas */
+    --bg:        210 20% 98%;   /* #f8fafc clean light background */
+    --bg-subtle: 214 32% 93%;   /* #e8edf5 distinct background tint */
 
-    /* Ink */
-    --ink:   240 8% 10%;       /* #191920 near-black */
-    --ink-2: 240 5% 38%;       /* #5c5c6e mid grey */
-    --ink-3: 240 4% 62%;       /* #9c9ca8 light grey */
+    /* Ink: High-contrast, WCAG AAA compliant text */
+    --ink:   222 47% 11%;       /* #0f172a ultra-deep charcoal for headings and body */
+    --ink-2: 215 25% 27%;       /* #334155 high-contrast slate-700 for descriptions */
+    --ink-3: 215 16% 38%;       /* #525e70 high-contrast slate-600 for metadata & muted labels */
 
-    /* Borders */
-    --line:  36 10% 87%;       /* #e2ddd8 */
-    --line-2: 36 8% 78%;       /* #cdc9c3 stronger line */
+    /* Borders: Clear, defined boundaries */
+    --line:  214 32% 82%;       /* #cbd5e1 slate-300 crisp, visible borders */
+    --line-2: 215 25% 68%;      /* #8e9db5 slate-400 strong structural lines */
 
-    /* Accent: deep forest green */
-    --accent:       157 50% 22%;  /* #1a5c41 */
-    --accent-hover: 157 50% 18%;  /* #155038 */
-    --accent-subtle:157 30% 93%;  /* #e2f0eb very light tint */
-    --accent-fg:    0 0% 98%;     /* white text on accent */
+    /* Accent: deep vibrant forest emerald */
+    --accent:       158 64% 32%;  /* #1d8758 rich legible emerald */
+    --accent-hover: 158 64% 26%;  /* #176d47 */
+    --accent-subtle:152 45% 93%;  /* #e2f4eb clean light tint */
+    --accent-fg:    0 0% 100%;    /* white text on accent */
 
     /* Feedback */
     --success: 142 52% 30%;
@@ -40,8 +40,8 @@
     --warning: 36 90% 48%;
 
     /* Surface cards */
-    --surface:   0 0% 100%;
-    --surface-2: 36 20% 97%;
+    --surface:   0 0% 100%;       /* Pure white card surface */
+    --surface-2: 214 28% 96%;
 
     /* Controls */
     --radius-control: 6px;
@@ -271,10 +271,11 @@
 
   /* ─── Highly Premium Interconnected Utilities ───────────────────────── */
   .glass-panel {
-    background-color: hsl(var(--surface) / 0.75);
+    background-color: rgba(255, 255, 255, 0.94);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    border: 1px solid hsl(var(--line) / 0.8);
+    border: 1px solid hsl(var(--line));
+    box-shadow: 0 4px 16px -2px rgba(15, 23, 42, 0.06), 0 1px 3px 0 rgba(15, 23, 42, 0.04);
   }
 
   .dark .glass-panel {
@@ -284,8 +285,9 @@
   }
 
   .premium-card {
-    background: linear-gradient(135deg, hsl(var(--surface)) 0%, hsl(var(--bg-subtle) / 0.5) 100%);
+    background: #ffffff;
     border: 1px solid hsl(var(--line));
+    box-shadow: 0 4px 14px -2px rgba(15, 23, 42, 0.06), 0 1px 2px 0 rgba(15, 23, 42, 0.04);
     position: relative;
     transition: all 300ms cubic-bezier(0.16, 1, 0.3, 1);
   }
@@ -297,8 +299,8 @@
   }
 
   .premium-card:hover {
-    border-color: hsl(var(--accent) / 0.4);
-    box-shadow: 0 12px 30px -4px rgba(0, 0, 0, 0.15), 0 0 20px 0 hsl(var(--accent) / 0.08);
+    border-color: hsl(var(--accent) / 0.5);
+    box-shadow: 0 12px 30px -4px rgba(15, 23, 42, 0.12), 0 0 20px 0 hsl(var(--accent) / 0.1);
   }
 
   .dark .premium-card:hover {

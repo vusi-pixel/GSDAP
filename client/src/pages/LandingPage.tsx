@@ -526,23 +526,19 @@ export default function LandingPage() {
 
       {/* ─── 4. Call to Technical Enrollment ───────────────────────────────── */}
       <section
-        className="relative py-32 px-6 md:px-12 overflow-hidden z-10"
+        className="relative py-32 px-6 md:px-12 overflow-hidden z-10 bg-slate-950 text-white"
         style={{ backgroundImage: 'url(/images/cta-bg.jpg)', backgroundSize: 'cover', backgroundPosition: 'center 30%' }}
       >
-        {/* Blend layer stack */}
-        {/* 1. dark base tint to unify the image with the site palette */}
-        <div className="absolute inset-0 bg-background/70 mix-blend-multiply" />
-        {/* 2. emerald hue wash to tie into brand colour */}
+        {/* Consistent dark overlay ensures crystal-clear text readability in both light and dark modes */}
+        <div className="absolute inset-0 bg-slate-950/85" />
         <div className="absolute inset-0 bg-emerald-950/40 mix-blend-color" />
-        {/* 3. gradient fade — top transparent → bottom solid background (blends into footer) */}
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/30 to-background" />
-        {/* 4. left vignette for depth */}
-        <div className="absolute inset-0 bg-gradient-to-r from-background/60 via-transparent to-background/60" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-slate-950/40 to-slate-950/90" />
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-950/60 via-transparent to-slate-950/60" />
 
         <FadeIn direction="up" className="relative z-10">
           <div className="max-w-5xl mx-auto text-center space-y-7">
 
-            <div className="inline-flex items-center gap-2 font-mono text-xs text-emerald-300/90 uppercase tracking-widest border border-emerald-500/30 px-3 py-1 rounded bg-emerald-950/40 shadow-sm backdrop-blur-sm">
+            <div className="inline-flex items-center gap-2 font-mono text-xs text-emerald-300 uppercase tracking-widest border border-emerald-500/40 px-3 py-1 rounded bg-emerald-950/60 shadow-sm backdrop-blur-sm">
               <ShieldCheck size={14} strokeWidth={1.5} className="text-emerald-400" />
               <span>Open Access to Verified Education</span>
             </div>
@@ -551,14 +547,14 @@ export default function LandingPage() {
               Initiate Your Certified Engineering Journey.
             </h2>
 
-            <p className="text-sm md:text-lg text-white/70 font-sans max-w-xl mx-auto leading-relaxed">
+            <p className="text-sm md:text-lg text-white/80 font-sans max-w-xl mx-auto leading-relaxed">
               Create an academic dossier in 30 seconds. Access official curricula from Google, Microsoft, NVIDIA, and TVET colleges — zero tuition, verified credentials.
             </p>
 
             <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4 font-mono text-xs">
               <Link
                 to="/login"
-                className="px-8 py-4 bg-white text-background hover:bg-white/90 transition-all font-semibold uppercase tracking-wider inline-flex items-center gap-2 shadow-2xl active:scale-95"
+                className="px-8 py-4 bg-emerald-500 hover:bg-emerald-400 text-slate-950 transition-all font-semibold uppercase tracking-wider inline-flex items-center gap-2 shadow-2xl active:scale-95"
               >
                 <span>Access Learner Registry</span>
                 <ArrowRight size={14} strokeWidth={1.5} />
