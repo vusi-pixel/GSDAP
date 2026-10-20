@@ -14,6 +14,7 @@ import {
   GitBranch,
   Radio,
   Zap,
+  UserPlus,
 } from 'lucide-react';
 import { useQuery } from '@tanstack/react-query';
 import { catalogApi } from '../lib/api';
@@ -524,7 +525,118 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* ─── 4. Call to Technical Enrollment ───────────────────────────────── */}
+      {/* ─── 4. Student Dossier Registration Section ─────────────────────── */}
+      <section id="register" className="border-b border-border/80 py-20 px-6 md:px-12 bg-background/60 relative z-10">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            {/* Left Column: Context & Guarantees */}
+            <FadeIn direction="up" className="lg:col-span-7 space-y-6">
+              <div className="inline-flex items-center gap-2 font-mono text-xs text-muted-foreground uppercase tracking-widest">
+                <span className="flex items-center gap-1.5 text-foreground font-semibold">
+                  <UserPlus size={14} className="text-emerald-600 dark:text-emerald-400" />
+                  National Registration Portal
+                </span>
+                <span>·</span>
+                <span className="text-emerald-600 dark:text-emerald-400 font-semibold">Real-Time Database Sync</span>
+              </div>
+
+              <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal tracking-tight text-foreground leading-tight">
+                Create Your Verified Academic Dossier.
+              </h2>
+
+              <p className="text-base text-muted-foreground font-sans max-w-xl leading-relaxed">
+                Join Ghana Student Digital Access Programme to unlock official coursework, peer study cohorts, and nationally verifiable certifications from Google, Microsoft, NVIDIA, and TVET.
+              </p>
+
+              {/* 3-Step Candidate Sequence */}
+              <div className="space-y-4 pt-2 font-sans text-sm">
+                <div className="flex items-start gap-3.5">
+                  <div className="w-6 h-6 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0 mt-0.5 font-mono text-xs font-bold border border-emerald-500/30">
+                    1
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-foreground">Instant Real-Time Student Account</h4>
+                    <p className="text-xs text-muted-foreground mt-0.5 leading-relaxed">
+                      Recorded directly into our authenticated real-time database with permanent session attestations.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3.5">
+                  <div className="w-6 h-6 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0 mt-0.5 font-mono text-xs font-bold border border-emerald-500/30">
+                    2
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-foreground">Select Accredited Technical Curricula</h4>
+                    <p className="text-xs text-muted-foreground mt-0.5 leading-relaxed">
+                      Cloud infrastructure, machine learning, modern web architecture, and vocational electronics.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3.5">
+                  <div className="w-6 h-6 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0 mt-0.5 font-mono text-xs font-bold border border-emerald-500/30">
+                    3
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-foreground">Cryptographically Sealed Credentials</h4>
+                    <p className="text-xs text-muted-foreground mt-0.5 leading-relaxed">
+                      Every completed unit is awarded an immutable verification identifier that global employers audit instantly.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </FadeIn>
+
+            {/* Right Column: Registration Card */}
+            <FadeIn direction="up" delay={0.1} className="lg:col-span-5">
+              <div className="border border-border/80 p-8 rounded-md bg-card/90 glass-panel shadow-xl space-y-6 relative overflow-hidden">
+                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-500 via-teal-500 to-emerald-400" />
+
+                <div className="border-b border-border/60 pb-4">
+                  <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground block mb-1">
+                    NEW TECHNICAL CANDIDATE REGISTRATION
+                  </span>
+                  <h3 className="font-serif text-2xl font-normal text-foreground">
+                    Enroll in GSDAP Registry
+                  </h3>
+                  <p className="text-xs text-muted-foreground mt-1 font-sans">
+                    All core learning pathways are 100% free and open access.
+                  </p>
+                </div>
+
+                {/* Quick Registration Status & Transition */}
+                <div className="space-y-4 pt-1">
+                  <div className="p-3.5 border border-emerald-500/30 bg-emerald-500/10 rounded-sm font-mono text-xs flex items-center justify-between text-emerald-700 dark:text-emerald-400">
+                    <span className="flex items-center gap-1.5 font-semibold">
+                      <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                      Supabase Real-Time Node
+                    </span>
+                    <span className="text-[10px]">READY FOR SIGN UP</span>
+                  </div>
+
+                  <Link
+                    to="/register"
+                    className="w-full py-4 px-6 bg-emerald-600 hover:bg-emerald-700 text-white font-mono text-xs uppercase tracking-wider font-semibold rounded-sm inline-flex items-center justify-center gap-2 shadow-lg hover:shadow-xl active:scale-95 transition-all"
+                  >
+                    <span>Proceed to Sign Up Form</span>
+                    <ArrowRight size={14} strokeWidth={1.5} />
+                  </Link>
+
+                  <div className="text-center font-mono text-xs text-muted-foreground pt-2 border-t border-border/60">
+                    <span>Already hold an academic dossier? </span>
+                    <Link to="/login" className="text-foreground hover:underline font-semibold">
+                      Sign In Here
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </FadeIn>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── 5. Call to Technical Enrollment ───────────────────────────────── */}
       <section
         className="relative py-28 md:py-36 px-6 md:px-12 overflow-hidden z-10 border-t border-border bg-card dark:bg-slate-950 text-foreground dark:text-white"
         style={{ backgroundImage: 'url(/images/cta-bg.jpg)', backgroundSize: 'cover', backgroundPosition: 'center 30%' }}
@@ -553,17 +665,17 @@ export default function LandingPage() {
 
             <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4 font-mono text-xs">
               <Link
-                to="/login"
+                to="/register"
                 className="px-8 py-4 bg-emerald-600 hover:bg-emerald-700 text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-slate-950 transition-all font-semibold uppercase tracking-wider inline-flex items-center gap-2 shadow-xl hover:shadow-2xl active:scale-95"
               >
-                <span>Access Learner Registry</span>
+                <span>Register Student Dossier</span>
                 <ArrowRight size={14} strokeWidth={1.5} />
               </Link>
               <Link
-                to="/catalog"
+                to="/login"
                 className="px-6 py-4 border border-border bg-card/90 hover:bg-muted text-foreground dark:border-white/30 dark:bg-white/10 dark:hover:bg-white/20 dark:text-white transition-all font-semibold uppercase tracking-wider backdrop-blur-sm shadow-md active:scale-95"
               >
-                Examine Course Syllabus
+                Sign In to Registry
               </Link>
             </div>
           </div>

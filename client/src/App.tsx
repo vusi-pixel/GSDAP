@@ -81,11 +81,10 @@ export default function App() {
     <SmoothScrollProvider>
       <Suspense fallback={<PageLoader />}>
         <Routes>
-          {/* Public portal first → login → dashboard */}
-          <Route path="/" element={<Navigate to="/home" replace />} />
-
-          {/* Public routes */}
+          {/* Public portal — Landing page launches directly at root */}
           <Route element={<RootLayout />}>
+            <Route index element={<LandingPage />} />
+            <Route path="/" element={<LandingPage />} />
             <Route path="/home" element={<LandingPage />} />
             <Route path="/landing" element={<LandingPage />} />
             <Route path="/catalog" element={<CatalogPage />} />

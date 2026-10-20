@@ -3,7 +3,7 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { Eye, EyeOff, Loader2, AlertCircle, ArrowRight, ShieldCheck } from 'lucide-react';
+import { Eye, EyeOff, Loader2, AlertCircle } from 'lucide-react';
 import { authApi } from '../../lib/api';
 import { useAuthStore, DEMO_USER } from '../../store';
 import { LoginSchema } from '@omc/shared';
@@ -66,11 +66,6 @@ export default function LoginPage() {
     }
   }
 
-  function handleQuickDevLogin() {
-    setAuth(DEMO_USER, 'demo-dev-token-xyz');
-    navigate('/dashboard', { replace: true });
-  }
-
   return (
     <div className="min-h-screen flex items-center justify-center bg-background px-4 py-12 antialiased text-foreground font-sans">
       <div className="w-full max-w-md space-y-6">
@@ -96,12 +91,12 @@ export default function LoginPage() {
               Sign In to Your Dossier
             </h1>
             <p className="text-xs text-muted-foreground font-sans mt-1">
-              Enter your registered credentials or launch directly in dev mode.
+              Enter your registered credentials to authenticate your session.
             </p>
           </div>
 
           {/* Real-Time Database Connection Badge */}
-          <div className="mb-4 flex items-center justify-between px-3 py-1.5 border border-emerald-500/30 bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 font-mono text-[11px] rounded-sm">
+          <div className="mb-6 flex items-center justify-between px-3 py-1.5 border border-emerald-500/30 bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 font-mono text-[11px] rounded-sm">
             <span className="flex items-center gap-1.5 font-semibold uppercase">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
               Supabase Real-Time Auth
@@ -109,25 +104,6 @@ export default function LoginPage() {
             <span className="text-[10px] text-muted-foreground truncate max-w-[170px]" title={SUPABASE_URL}>
               bpvjxenorzxummlgdwuf.supabase.co
             </span>
-          </div>
-
-          {/* Quick Dev Access Banner */}
-          <div className="mb-6 p-4 border border-border bg-muted/20 space-y-2">
-            <div className="flex items-center gap-1.5 font-mono text-xs text-foreground font-semibold uppercase">
-              <ShieldCheck size={14} strokeWidth={1.5} className="text-emerald-700 dark:text-emerald-400" />
-              <span>Instant Development Session</span>
-            </div>
-            <p className="text-xs text-muted-foreground leading-relaxed">
-              Bypass credentials and access the verified academic record for <strong>Student Learner</strong>.
-            </p>
-            <button
-              type="button"
-              onClick={handleQuickDevLogin}
-              className="w-full mt-2 font-mono text-xs uppercase tracking-wider py-2.5 bg-foreground text-background hover:opacity-90 transition-opacity font-semibold inline-flex items-center justify-center gap-2"
-            >
-              <span>Enter Dashboard Directly</span>
-              <ArrowRight size={13} strokeWidth={1.5} />
-            </button>
           </div>
 
           {/* Error Alert */}

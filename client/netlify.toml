@@ -6,6 +6,7 @@
 
 [build.environment]
   VITE_SUPABASE_URL = "https://bpvjxenorzxummlgdwuf.supabase.co"
+  VITE_SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJwdmp4ZW5vcnp4dW1tbGdkd3VmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTI0ODI0NjAsImV4cCI6MjEwODA1ODQ2MH0.Adre7RfUkDf7WSED1NmciQcwWJY16rpHYiYxXjjYMNI"
 
 [[redirects]]
   from = "/*"
