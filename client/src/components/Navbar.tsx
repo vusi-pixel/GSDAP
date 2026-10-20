@@ -281,9 +281,9 @@ export default function Navbar() {
                   <div className="flex items-center justify-between text-xs">
                     <span className="text-foreground font-semibold flex items-center gap-1.5">
                       <span className="w-2 h-2 rounded-full bg-emerald-500" />
-                      {user?.firstName ? `${user.firstName} ${user.lastName || ''}`.trim() : 'Learner Dossier'}
+                      {user?.firstName ? `${user.firstName} ${user.lastName || ''}`.trim() : (user?.email ? user.email.split('@')[0] : 'Learner')}
                     </span>
-                    <span className="text-[10px] text-muted-foreground font-mono">GSDAP-2026-8841</span>
+                    <span className="text-[10px] text-muted-foreground font-mono">{user?.id ? `ID: ${user.id.slice(0, 10)}` : 'GSDAP Registry'}</span>
                   </div>
                   <button
                     onClick={() => {

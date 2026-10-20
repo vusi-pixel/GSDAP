@@ -11,7 +11,7 @@ export interface User {
   emailVerified: boolean;
 }
 
-export type SessionStatus = 'active' | 'refreshing' | 'refreshed' | 'expired';
+export type SessionStatus = 'active' | 'refreshing' | 'refreshed' | 'expired' | 'unauthenticated';
 
 interface AuthState {
   user: User | null;
@@ -27,25 +27,17 @@ interface AuthState {
   logout: () => void;
 }
 
-export const DEMO_USER: User = {
-  id: 'usr_student',
-  email: 'student@gsdap.org',
-  firstName: 'Student',
-  lastName: 'Learner',
-  role: 'learner',
-  emailVerified: true,
-};
 
 export const useAuthStore = create<AuthState>()(
   persist(
     (set, get) => ({
-      user: DEMO_USER,
-      accessToken: 'demo-dev-token-xyz',
-      isAuthenticated: true,
-      sessionStatus: 'active',
-      lastRefreshedAt: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-      sessionAttestationId: 'GSDAP-SES-' + Math.random().toString(36).substring(2, 8).toUpperCase(),
-      sessionRefreshCount: 1,
+      user: null,
+      accessToken: null,
+      isAuthenticated: false,
+      sessionStatus: 'unauthenticated',
+      lastRefreshedAt: '',
+      sessionAttestationId: '',
+      sessionRefreshCount: 0,
 
       setAuth: (user, accessToken) =>
         set({
@@ -76,20 +68,8 @@ export const useAuthStore = create<AuthState>()(
           }, 3500);
           return true;
         } catch {
-          // Graceful fallback for offline / mock / dev demo sessions
-          await new Promise((r) => setTimeout(r, 650));
-          const simulatedToken = 'gsdap-jwt-' + Math.random().toString(36).substring(2, 10);
-          set((state) => ({
-            accessToken: simulatedToken,
-            sessionStatus: 'refreshed',
-            lastRefreshedAt: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' }),
-            sessionAttestationId: 'GSDAP-SES-' + Math.random().toString(36).substring(2, 8).toUpperCase(),
-            sessionRefreshCount: state.sessionRefreshCount + 1,
-          }));
-          setTimeout(() => {
-            set({ sessionStatus: 'active' });
-          }, 3500);
-          return true;
+          set({ sessionStatus: 'active' });
+          return false;
         }
       },
 
@@ -98,11 +78,11 @@ export const useAuthStore = create<AuthState>()(
           user: null,
           accessToken: null,
           isAuthenticated: false,
-          sessionStatus: 'expired',
+          sessionStatus: 'unauthenticated',
         }),
     }),
     {
-      name: 'omc-auth',
+      name: 'gsdap-auth-v2',
       partialize: (state) => ({
         user: state.user,
         accessToken: state.accessToken,

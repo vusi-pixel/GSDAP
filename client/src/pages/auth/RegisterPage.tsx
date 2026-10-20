@@ -129,7 +129,7 @@ export default function RegisterPage() {
                 <input
                   type="text"
                   className="w-full bg-background border border-border px-3 py-2 text-sm text-foreground focus:outline-none focus:border-foreground transition-colors font-sans"
-                  placeholder="Ada"
+                  placeholder="First name"
                   {...register('firstName')}
                 />
                 {errors.firstName && (
@@ -143,7 +143,7 @@ export default function RegisterPage() {
                 <input
                   type="text"
                   className="w-full bg-background border border-border px-3 py-2 text-sm text-foreground focus:outline-none focus:border-foreground transition-colors font-sans"
-                  placeholder="Lovelace"
+                  placeholder="Last name"
                   {...register('lastName')}
                 />
                 {errors.lastName && (
@@ -159,7 +159,7 @@ export default function RegisterPage() {
               <input
                 type="email"
                 className="w-full bg-background border border-border px-3.5 py-2 text-sm text-foreground focus:outline-none focus:border-foreground transition-colors font-mono"
-                placeholder="ada@computing.org"
+                placeholder="name@domain.com"
                 {...register('email')}
               />
               {errors.email && (

@@ -15,7 +15,7 @@ export default function VerifyCredentialPage() {
   const isDemo = code?.startsWith('GSDAP-') || code?.startsWith('OMC-') || code === 'demo' || !isError;
   const credentialInfo = data?.credential || {
     title: 'Professional Cloud Solutions Architect',
-    recipient: 'Jerry Justice Mensah',
+    recipient: 'Verified Student Candidate',
     issuer: 'Google Cloud & GSDAP National Academic Board',
     issuedAt: '2026-09-18T10:00:00Z',
     type: 'Accredited Professional Diploma',

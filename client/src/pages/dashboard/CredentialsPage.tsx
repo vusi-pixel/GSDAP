@@ -110,7 +110,7 @@ export default function CredentialsPage() {
             <div className="font-mono text-xs text-muted-foreground border border-border/80 px-4 py-2.5 rounded-md bg-card/60 glass-panel shadow-sm">
               <span className="text-[10px] uppercase tracking-wider block text-muted-foreground">REGISTRY HOLDER</span>
               <span className="text-foreground font-semibold text-sm">
-                {user?.firstName ? `${user.firstName} ${user.lastName || ''}`.trim() : 'Student Learner'}
+                {user?.firstName ? `${user.firstName} ${user.lastName || ''}`.trim() : (user?.email ? user.email.split('@')[0] : 'Accredited Scholar')}
               </span>
             </div>
           </div>
@@ -158,7 +158,7 @@ export default function CredentialsPage() {
         {credentials.map((cred: any) => {
           const verifyCode = cred.verifyCode || cred.id;
           const verifyHash = cred.verifyHash || '0x49FA...810B';
-          const recipient = user?.firstName ? `${user.firstName} ${user.lastName || ''}`.trim() : 'Student Learner';
+          const recipient = user?.firstName ? `${user.firstName} ${user.lastName || ''}`.trim() : (user?.email ? user.email.split('@')[0] : 'Accredited Scholar');
 
           return (
             <StaggerItem key={cred.id}>

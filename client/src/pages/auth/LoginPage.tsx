@@ -5,7 +5,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { Eye, EyeOff, Loader2, AlertCircle } from 'lucide-react';
 import { authApi } from '../../lib/api';
-import { useAuthStore, DEMO_USER } from '../../store';
+import { useAuthStore } from '../../store';
 import { LoginSchema } from '@omc/shared';
 
 import { supabaseSignIn, isSupabaseConfigured, SUPABASE_URL } from '../../lib/supabase';
@@ -27,8 +27,8 @@ export default function LoginPage() {
   } = useForm<LoginForm>({
     resolver: zodResolver(LoginSchema),
     defaultValues: {
-      email: 'student@gsdap.org',
-      password: 'Password123!',
+      email: '',
+      password: '',
     },
   });
 
@@ -53,16 +53,18 @@ export default function LoginPage() {
       }
     }
 
-    // 2. Fall back to local API endpoint / dev session
+    // 2. Fall back to local API endpoint
     try {
       const res = await authApi.login(data);
       const { user, accessToken } = res.data.data;
       setAuth(user, accessToken);
       navigate(from, { replace: true });
-    } catch (err: unknown) {
-      // In dev fallback, allow logging in with demo user
-      setAuth(DEMO_USER, 'demo-dev-token-xyz');
-      navigate(from, { replace: true });
+    } catch (err: any) {
+      const msg =
+        err?.response?.data?.message ||
+        err?.message ||
+        'Authentication failed. Please check your email and password, or register a new dossier.';
+      setError(msg);
     }
   }
 
