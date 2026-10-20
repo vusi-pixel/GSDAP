@@ -2,6 +2,7 @@ import { lazy, Suspense, useEffect } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { useAuthStore, useThemeStore } from './store';
 import { useTranslation } from 'react-i18next';
+import { initSupabaseAuth } from './lib/supabase';
 
 import { SmoothScrollProvider } from './lib/lenis';
 
@@ -63,6 +64,18 @@ export default function App() {
     if (theme === 'dark') root.classList.add('dark');
     else root.classList.remove('dark');
   }, [theme]);
+
+  // Synchronize real-time Supabase auth events across browser sessions & tabs
+  useEffect(() => {
+    const unsubscribe = initSupabaseAuth((user, token) => {
+      if (user && token) {
+        useAuthStore.getState().setAuth(user, token);
+      } else if (!user) {
+        useAuthStore.getState().logout();
+      }
+    });
+    return () => unsubscribe();
+  }, []);
 
   return (
     <SmoothScrollProvider>

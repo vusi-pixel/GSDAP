@@ -6,6 +6,7 @@ import { z } from 'zod';
 import { Eye, EyeOff, Loader2, AlertCircle, CheckCircle2, ArrowRight } from 'lucide-react';
 import { authApi } from '../../lib/api';
 import { RegisterSchema } from '@omc/shared';
+import { supabaseSignUp, isSupabaseConfigured, SUPABASE_URL } from '../../lib/supabase';
 
 type RegisterForm = z.infer<typeof RegisterSchema>;
 
@@ -25,6 +26,20 @@ export default function RegisterPage() {
 
   async function onSubmit(data: RegisterForm) {
     setError('');
+
+    // 1. Register with Supabase Realtime Database if configured
+    if (isSupabaseConfigured()) {
+      try {
+        await supabaseSignUp(data);
+        setSuccess(true);
+        return;
+      } catch (sbErr: any) {
+        setError(sbErr?.message || 'Registration failed in Supabase. Please check input parameters.');
+        return;
+      }
+    }
+
+    // 2. Fall back to local API endpoint
     try {
       await authApi.register(data);
       setSuccess(true);
@@ -85,6 +100,17 @@ export default function RegisterPage() {
             <p className="text-xs text-muted-foreground font-sans mt-1">
               Join the national technical learning consortium. All core curricula remain public and free.
             </p>
+          </div>
+
+          {/* Real-Time Database Connection Badge */}
+          <div className="mb-6 flex items-center justify-between px-3 py-1.5 border border-emerald-500/30 bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 font-mono text-[11px] rounded-sm">
+            <span className="flex items-center gap-1.5 font-semibold uppercase">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+              Supabase Real-Time Database
+            </span>
+            <span className="text-[10px] text-muted-foreground truncate max-w-[170px]" title={SUPABASE_URL}>
+              bpvjxenorzxummlgdwuf.supabase.co
+            </span>
           </div>
 
           {error && (

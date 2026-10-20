@@ -8,6 +8,8 @@ import { authApi } from '../../lib/api';
 import { useAuthStore, DEMO_USER } from '../../store';
 import { LoginSchema } from '@omc/shared';
 
+import { supabaseSignIn, isSupabaseConfigured, SUPABASE_URL } from '../../lib/supabase';
+
 type LoginForm = z.infer<typeof LoginSchema>;
 
 export default function LoginPage() {
@@ -35,6 +37,23 @@ export default function LoginPage() {
 
   async function onSubmit(data: LoginForm) {
     setError('');
+
+    // 1. Authenticate with Supabase Realtime Database if configured
+    if (isSupabaseConfigured()) {
+      try {
+        const res = await supabaseSignIn(data);
+        if (res.user) {
+          setAuth(res.user, res.accessToken);
+          navigate(from, { replace: true });
+          return;
+        }
+      } catch (sbErr: any) {
+        setError(sbErr?.message || 'Supabase authentication failed. Please check credentials.');
+        return;
+      }
+    }
+
+    // 2. Fall back to local API endpoint / dev session
     try {
       const res = await authApi.login(data);
       const { user, accessToken } = res.data.data;
@@ -79,6 +98,17 @@ export default function LoginPage() {
             <p className="text-xs text-muted-foreground font-sans mt-1">
               Enter your registered credentials or launch directly in dev mode.
             </p>
+          </div>
+
+          {/* Real-Time Database Connection Badge */}
+          <div className="mb-4 flex items-center justify-between px-3 py-1.5 border border-emerald-500/30 bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 font-mono text-[11px] rounded-sm">
+            <span className="flex items-center gap-1.5 font-semibold uppercase">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+              Supabase Real-Time Auth
+            </span>
+            <span className="text-[10px] text-muted-foreground truncate max-w-[170px]" title={SUPABASE_URL}>
+              bpvjxenorzxummlgdwuf.supabase.co
+            </span>
           </div>
 
           {/* Quick Dev Access Banner */}
